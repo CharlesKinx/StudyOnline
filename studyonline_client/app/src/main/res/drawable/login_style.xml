@@ -5,7 +5,7 @@
     <!-- 边框 -->
     <stroke
         android:width="2dip"
-        android:color="#F2F3ED" />
+        android:color="#F0CAF8" />
     <!-- 内填充颜色 -->
     <padding
         android:bottom="10dp"
