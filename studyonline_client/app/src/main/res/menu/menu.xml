@@ -7,7 +7,7 @@
     <item
         android:id="@+id/navigation_item2"
         android:icon="@drawable/friend"
-        android:title="好友" />
+        android:title="好 友" />
     <item
         android:id="@+id/navigation_item3"
         android:icon="@drawable/quan"
