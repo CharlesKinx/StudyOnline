@@ -3,9 +3,7 @@
 
     <solid android:color="#A8E0F1" />
     <!-- 边框 -->
-    <stroke
-        android:width="0.1dip"
-        android:color="#F0EDF1" />
+
     <!-- 内填充颜色 -->
     <padding
         android:bottom="10dp"

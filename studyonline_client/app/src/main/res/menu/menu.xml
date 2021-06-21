@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_item1"
+        android:icon="@drawable/course"
+        android:title="课 程" />
+    <item
+        android:id="@+id/navigation_item2"
+        android:icon="@drawable/friend"
+        android:title="好友" />
+    <item
+        android:id="@+id/navigation_item3"
+        android:icon="@drawable/quan"
+        android:title="友 圈" />
+    <item
+        android:id="@+id/navigation_item4"
+        android:icon="@drawable/score"
+        android:title="成 绩" />
+
+</menu>

@@ -4,10 +4,7 @@
 
     <solid android:color="#E5E8E7" />
     <!-- 边框 -->
-    <stroke
-        android:width="0.1dip"
-        android:color="#FFFFFF" />
-    <!-- 内填充颜色 -->
+   
     <padding
         android:bottom="10dp"
         android:left="10dp"
