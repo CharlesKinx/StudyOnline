@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#66CCDA"
+    android:background="#4BD8E8EA"
     >
 
     <TextView
-        android:layout_marginTop="20dp"
+        android:elevation="10dp"
+        android:layout_marginTop="80dp"
         android:layout_gravity="center_horizontal"
         android:text="  小 课 堂  "
         android:textSize="50sp"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"/>
 
 <LinearLayout
+    android:elevation="10dp"
     android:background="@drawable/login_et_style"
     android:layout_marginTop="20dp"
     android:layout_width="370dp"
