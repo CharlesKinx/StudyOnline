@@ -6,12 +6,11 @@
 
     <TextView
 
-        android:text="友圈界面"
+        android:text="好友界面"
         android:textSize="40sp"
         android:layout_gravity="center"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-
 
 </LinearLayout>

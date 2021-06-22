@@ -9,6 +9,37 @@
     android:orientation="vertical"
     tools:context=".activity.MainPageActivity">
 
+    <LinearLayout
+        android:elevation="8dp"
+        android:background="@drawable/login_et_style"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/user1"/>
+        <LinearLayout
+            android:layout_gravity="center"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/title_fragment"
+                android:textSize="20sp"
+                android:layout_marginLeft="110dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/content"
@@ -23,11 +54,10 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
-        android:background="#EDEDED"
+        android:background="#FFFFFF"
         app:itemIconTint="@color/navigation"
-        app:itemTextColor="@color/navigation"
+        app:itemTextColor="@color/code"
         app:menu="@menu/menu"
-
         />
 
 </LinearLayout>
