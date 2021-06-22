@@ -6,15 +6,15 @@
         android:title="课 程" />
     <item
         android:id="@+id/navigation_item2"
-        android:icon="@drawable/friend"
-        android:title="好 友" />
+        android:icon="@drawable/quan"
+        android:title="交 流" />
     <item
         android:id="@+id/navigation_item3"
-        android:icon="@drawable/quan"
-        android:title="友 圈" />
-    <item
-        android:id="@+id/navigation_item4"
         android:icon="@drawable/score"
         android:title="成 绩" />
+    <item
+        android:id="@+id/navigation_item4"
+        android:icon="@drawable/friend"
+        android:title="个 人" />
 
 </menu>

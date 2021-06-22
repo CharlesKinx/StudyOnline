@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.fragment.CourseLiveFragment;
 import com.example.studyonline_client.fragment.FriendContactFragment;
-import com.example.studyonline_client.fragment.FriendListFragment;
+import com.example.studyonline_client.fragment.PersonalCenterFragment;
 import com.example.studyonline_client.fragment.ScoreAnalysisFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -19,7 +19,7 @@ public class MainPageActivity extends AppCompatActivity {
 
     private CourseLiveFragment courseLiveFragment;
     private FriendContactFragment friendContactFragment;
-    private FriendListFragment friendListFragment;
+    private PersonalCenterFragment personalCenterFragment;
     private ScoreAnalysisFragment scoreAnalysisFragment;
 
     private TextView textView;
@@ -48,13 +48,13 @@ public class MainPageActivity extends AppCompatActivity {
     private void initView(){
         courseLiveFragment = new CourseLiveFragment();
         friendContactFragment = new FriendContactFragment();
-        friendListFragment = new FriendListFragment();
+        personalCenterFragment = new PersonalCenterFragment();
         scoreAnalysisFragment = new ScoreAnalysisFragment();
         textView = findViewById(R.id.title_fragment);
         FragmentTransaction  fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.content,courseLiveFragment).add(R.id.content,friendListFragment)
+        fragmentTransaction.add(R.id.content,courseLiveFragment).add(R.id.content, personalCenterFragment)
                 .add(R.id.content,friendContactFragment).add(R.id.content,scoreAnalysisFragment);
-        fragmentTransaction.hide(courseLiveFragment).hide(friendListFragment)
+        fragmentTransaction.hide(courseLiveFragment).hide(personalCenterFragment)
                 .hide(friendContactFragment).hide(scoreAnalysisFragment);
 
         fragmentTransaction.addToBackStack(null);
@@ -66,30 +66,30 @@ public class MainPageActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         switch (item){
             case R.id.navigation_item1:
-                fragmentTransaction.hide(friendListFragment).hide(scoreAnalysisFragment).hide(friendContactFragment);
+                fragmentTransaction.hide(personalCenterFragment).hide(scoreAnalysisFragment).hide(friendContactFragment);
                 fragmentTransaction.show(courseLiveFragment);
                 textView.setText("课程中心");
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
             case R.id.navigation_item2:
-                fragmentTransaction.hide(courseLiveFragment).hide(scoreAnalysisFragment).hide(friendContactFragment);
-                fragmentTransaction.show(friendListFragment);
-                textView.setText(" 好友 ");
+                fragmentTransaction.hide(courseLiveFragment).hide(scoreAnalysisFragment).hide(personalCenterFragment);
+                fragmentTransaction.show(friendContactFragment);
+                textView.setText(" 交流 ");
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
             case R.id.navigation_item3:
-                fragmentTransaction.hide(courseLiveFragment).hide(scoreAnalysisFragment).hide(friendListFragment);
-                fragmentTransaction.show(friendContactFragment);
-                textView.setText(" 友圈 ");
+                fragmentTransaction.hide(courseLiveFragment).hide(friendContactFragment).hide(personalCenterFragment);
+                fragmentTransaction.show(scoreAnalysisFragment);
+                textView.setText(" 成绩 ");
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
             case R.id.navigation_item4:
-                fragmentTransaction.hide(courseLiveFragment).hide(friendContactFragment).hide(friendListFragment);
-                fragmentTransaction.show(scoreAnalysisFragment);
-                textView.setText("成绩分析");
+                fragmentTransaction.hide(courseLiveFragment).hide(friendContactFragment).hide(scoreAnalysisFragment);
+                fragmentTransaction.show(personalCenterFragment);
+                textView.setText("个人中心");
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;

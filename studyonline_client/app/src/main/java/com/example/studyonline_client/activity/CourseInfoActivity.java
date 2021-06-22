@@ -89,7 +89,6 @@ public class CourseInfoActivity extends AppCompatActivity {
     }
 
 
-
     public class MyAdapter extends FragmentPagerAdapter {
         public MyAdapter(FragmentManager fm) {
             super(fm);
