@@ -76,7 +76,6 @@ public class MainPageActivity extends AppCompatActivity {
                 fragmentTransaction.hide(courseLiveFragment).hide(scoreAnalysisFragment).hide(friendContactFragment);
                 fragmentTransaction.show(friendListFragment);
                 textView.setText(" 好友 ");
-
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;

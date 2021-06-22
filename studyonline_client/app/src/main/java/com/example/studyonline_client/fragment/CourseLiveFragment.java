@@ -1,21 +1,25 @@
 package com.example.studyonline_client.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.ListFragment;
 
 import com.example.studyonline_client.R;
+import com.example.studyonline_client.activity.CourseInfoActivity;
 import com.example.studyonline_client.adapter.CourseListAdapter;
 import com.example.studyonline_client.model.CourseInfo;
 
 import java.util.ArrayList;
 
-public class CourseLiveFragment extends Fragment {
+public class CourseLiveFragment extends ListFragment {
 
     private ListView listView;
     private CourseListAdapter courseListAdapter;
@@ -40,5 +44,13 @@ public class CourseLiveFragment extends Fragment {
         courseListAdapter = new CourseListAdapter(getActivity(),courseInfoArrayList);
         listView.setAdapter(courseListAdapter);
         return view;
+    }
+
+    @Override
+    public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        CourseInfo courseInfo = courseInfoArrayList.get(position);
+        Intent intent = new Intent(getActivity(), CourseInfoActivity.class);
+        startActivity(intent);
     }
 }

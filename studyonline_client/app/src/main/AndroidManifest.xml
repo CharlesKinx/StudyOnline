@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".activity.RegisterActivity"></activity>
         <activity android:name=".activity.MainPageActivity"></activity>
+        <activity android:name=".activity.CourseInfoActivity"></activity>
     </application>
 
 </manifest>

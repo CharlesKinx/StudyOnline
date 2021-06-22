@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
 
+
+    <TextView
         android:text="友圈界面"
         android:textSize="40sp"
         android:layout_gravity="center"
