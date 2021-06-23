@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#B494FA8D"
+
     >
 
     <LinearLayout
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
         android:elevation="5dp"
         android:background="@drawable/chart_back"
@@ -67,7 +67,7 @@
             android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#E4E4E4"
+            android:background="#000000"
             ></View>
 
 
@@ -102,7 +102,7 @@
             android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#E4E4E4"
+            android:background="#000000"
             ></View>
 
 
@@ -179,11 +179,12 @@
             android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#E4E4E4"
+            android:background="#000000"
             ></View>
 
 
         <LinearLayout
+            android:layout_marginTop="5dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -220,11 +221,13 @@
             android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#E4E4E4"
+            android:background="#000000"
             ></View>
 
 
         <LinearLayout
+            android:layout_marginTop="5dp"
+
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -259,6 +262,7 @@
 
 
     <LinearLayout
+        android:id="@+id/btn_change_information"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
@@ -269,7 +273,6 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/btn_change_information"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -285,30 +288,8 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#E4E4E4"
-            ></View>
 
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp"
-                android:text="待定"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
 
         </LinearLayout>
 

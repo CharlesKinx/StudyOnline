@@ -24,6 +24,7 @@
         <activity android:name=".activity.RegisterActivity"></activity>
         <activity android:name=".activity.MainPageActivity"></activity>
         <activity android:name=".activity.CourseInfoActivity"></activity>
+        <activity android:name=".activity.ChangePersonalInfoActivity"></activity>
     </application>
 
 </manifest>
