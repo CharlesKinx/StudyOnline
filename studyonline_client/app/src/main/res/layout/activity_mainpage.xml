@@ -12,9 +12,10 @@
 
     <LinearLayout
         android:elevation="8dp"
-        android:background="@drawable/login_et_style"
+        android:background="#94D2F3"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+
         android:orientation="horizontal">
 
         <ImageButton
@@ -51,11 +52,12 @@
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+
         android:id="@+id/bv"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
-        android:background="#FFFFFF"
+        android:background="#94D2F3"
         app:itemIconTint="@color/navigation"
         app:itemTextColor="@color/code"
         app:menu="@menu/menu"

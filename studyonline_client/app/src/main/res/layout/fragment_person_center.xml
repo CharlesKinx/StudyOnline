@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="#B494FA8D"
     >
 
     <LinearLayout
@@ -13,7 +13,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:elevation="5dp"
-        android:background="@drawable/course_shape"
+        android:background="@drawable/chart_back"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="200dp">
@@ -33,7 +33,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
         android:elevation="5dp"
-        android:background="@drawable/course_shape"
+        android:background="@drawable/chart_back"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -137,7 +137,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
         android:elevation="5dp"
-        android:background="@drawable/course_shape"
+        android:background="@drawable/chart_back"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -263,7 +263,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
         android:elevation="5dp"
-        android:background="@drawable/course_shape"
+        android:background="@drawable/chart_back"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -316,9 +316,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:background="#EC5454"
+        android:background="#FB3939"
         android:text="退出登录"
-        android:textColor="#4A4A4A"
+        android:textColor="#2B2B2B"
         android:textSize="17sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
