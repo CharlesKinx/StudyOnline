@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.studyonline_client.R;
 
-public class CourseInfoFragment extends Fragment {
+public class  CourseInfoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
