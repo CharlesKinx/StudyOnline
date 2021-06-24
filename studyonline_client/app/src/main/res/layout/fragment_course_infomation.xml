@@ -15,6 +15,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+
                 android:elevation="5dp"
                 android:gravity="center"
                 android:layout_margin="15dp"
@@ -95,9 +96,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="240dp"/>
 
-
                     <TextView
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:text="高等数学是指相对于初等数学和中等数学而言，数学的对象及方法较为繁杂的一部分，中学的代数、几何以及简单的集合论初步、逻辑初步称为中等数学，将其作为中小学阶段的初等数学与大学阶段的高等数学的过渡。 通常认为，高等数学是由微积分学，较深入的代数学、几何学以及它们之间的交叉内容所形成的一门基础学科。"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>

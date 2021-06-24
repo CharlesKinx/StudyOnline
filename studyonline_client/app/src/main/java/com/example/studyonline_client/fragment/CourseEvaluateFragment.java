@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -44,6 +45,7 @@ public class CourseEvaluateFragment extends Fragment implements View.OnClickList
     private ImageButton buttonThree;
     private ImageButton buttonFour;
     private ImageButton buttonFive;
+    private LinearLayout linearLayoutView;
 
     private void initView(View view){
         horizontalBarChart = view.findViewById(R.id.hor_chart);
@@ -52,6 +54,7 @@ public class CourseEvaluateFragment extends Fragment implements View.OnClickList
         buttonThree = view.findViewById(R.id.three_star);
         buttonFour = view.findViewById(R.id.four_star);
         buttonFive = view.findViewById(R.id.five_star);
+        linearLayoutView = view.findViewById(R.id.dis_view);
     }
 
 
@@ -149,6 +152,7 @@ public class CourseEvaluateFragment extends Fragment implements View.OnClickList
                     buttonTwo.setBackground(getResources().getDrawable(R.drawable.ok_star));
                     buttonOne.setBackground(getResources().getDrawable(R.drawable.ok_star));
                     buttonThree.setBackground(getResources().getDrawable(R.drawable.ok_star));
+                    linearLayoutView.setVisibility(View.GONE);
                 break;
             case R.id.five_star:
                     buttonFour.setBackground(getResources().getDrawable(R.drawable.ok_star));
