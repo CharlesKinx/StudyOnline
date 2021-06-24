@@ -10,25 +10,25 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginBottom="10dp"
-                android:elevation="6dp"
-                android:background="@drawable/login_et_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/login_et_style"
+                android:elevation="6dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -41,255 +41,143 @@
 
                 <LinearLayout
 
-                    android:layout_margin="10dp"
                     android:layout_width="260dp"
                     android:layout_height="100dp"
+                    android:layout_margin="10dp"
                     android:orientation="horizontal">
 
                     <com.github.mikephil.charting.charts.HorizontalBarChart
                         android:id="@+id/hor_chart"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@android:color/white"
-                        />
-
+                        android:background="@android:color/white" />
 
 
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/dis_view"
-                android:elevation="5dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/course_shape"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/login_et_style"
+                android:elevation="5dp"
+                android:orientation="vertical">
+
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
                     <TextView
-                        android:textColor="#000000"
-                        android:text="我的评价:"
-                        android:layout_gravity="center"
-                        android:textSize="15sp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="我的评价:"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
                     <ImageButton
 
                         android:id="@+id/one_star"
-                        android:layout_marginLeft="50dp"
-                        android:background="@drawable/evaluate_star"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
-                        />
+                        android:layout_marginLeft="50dp"
+                        android:background="@drawable/evaluate_star" />
 
                     <ImageButton
                         android:id="@+id/two_star"
 
-                        android:layout_marginLeft="15dp"
-                        android:background="@drawable/evaluate_star"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
-                        />
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/evaluate_star" />
+
                     <ImageButton
                         android:id="@+id/three_star"
 
-                        android:layout_marginLeft="15dp"
-                        android:background="@drawable/evaluate_star"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
-                        />
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/evaluate_star" />
+
                     <ImageButton
                         android:id="@+id/four_star"
 
-                        android:layout_marginLeft="15dp"
-                        android:background="@drawable/evaluate_star"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
-                        />
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/evaluate_star" />
 
                     <ImageButton
                         android:id="@+id/five_star"
-                        android:layout_marginLeft="15dp"
-                        android:background="@drawable/evaluate_star"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
-                        />
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/evaluate_star" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:text="我的评论:"
-                        android:textColor="#000000"
-                        android:textSize="15sp"
-
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="我的评论:"
+
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
                     <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/et_course_comment"
-                            android:layout_gravity="center"
-                            android:textSize="15sp"
-                            android:text="老师讲的很好!"
                             android:layout_width="260dp"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="老师讲的很好!"
+                            android:textSize="15sp" />
 
                         <Button
                             android:id="@+id/btn_course_comment"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:text="评论"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"/>
+                            android:text="评论" />
                     </LinearLayout>
 
                 </LinearLayout>
 
-`
+                `
             </LinearLayout>
 
 
-
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="课程安排"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <ListView
+                android:id="@+id/comment_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
     </ScrollView>
-
 
 
 </LinearLayout>
