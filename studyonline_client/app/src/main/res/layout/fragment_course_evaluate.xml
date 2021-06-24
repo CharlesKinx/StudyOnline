@@ -10,13 +10,17 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
                 android:elevation="5dp"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/course_shape"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -25,7 +29,7 @@
                 android:textColor="#000000"
                 android:text="我的评价:"
                 android:layout_gravity="center"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -75,52 +79,165 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     />
-            </LinearLayout>
+            </LinearLayout>`
 
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:elevation="10dp"
-            android:background="@drawable/login_et_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:text="评分"
-                    android:textSize="30sp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-
-                android:layout_margin="10dp"
-                android:layout_width="260dp"
-                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="10dp"
+                android:elevation="6dp"
+                android:background="@drawable/login_et_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.github.mikephil.charting.charts.HorizontalBarChart
-                    android:id="@+id/hor_chart"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white"
-                   />
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:text="评分"
+                        android:textSize="30sp" />
 
 
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_margin="10dp"
+                    android:layout_width="260dp"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <com.github.mikephil.charting.charts.HorizontalBarChart
+                        android:id="@+id/hor_chart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/white"
+                       />
+
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="课程安排"
+                android:textSize="50sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

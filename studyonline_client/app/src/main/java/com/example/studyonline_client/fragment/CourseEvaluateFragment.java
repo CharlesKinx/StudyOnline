@@ -26,6 +26,7 @@ import com.github.mikephil.charting.data.RadarData;
 import com.github.mikephil.charting.data.RadarDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.taufiqrahman.reviewratings.BarLabels;
 import com.taufiqrahman.reviewratings.RatingReviews;
 
@@ -73,6 +74,14 @@ public class CourseEvaluateFragment extends Fragment implements View.OnClickList
         barDataSet.setColor(Color.parseColor("#606060"));
         BarData barData=new BarData(barDataSet);
         horizontalBarChart.setData(barData);
+
+        barDataSet.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return ((int)value)+"";
+            }
+        });
+
 
         horizontalBarChart.getDescription().setEnabled(false);//隐藏右下角英文
         horizontalBarChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);//X轴的位置 默认为右边

@@ -14,15 +14,95 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-            <TextView
-                android:layout_gravity="center"
+            <LinearLayout
+                android:elevation="5dp"
                 android:gravity="center"
-                android:text="课程信息"
-                android:textSize="50sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_margin="15dp"
+                android:orientation="vertical"
+                android:background="@drawable/course_shape"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:textSize="25sp"
+                    android:text="高等数学"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
 
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+
+                        android:layout_marginTop="5dp"
+                        android:textSize="15sp"
+                        android:text="教师："
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:textSize="15sp"
+                        android:text="吴海董"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginTop="5dp"
+                        android:textSize="15sp"
+                        android:text="1589"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                       android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textSize="15sp"
+                        android:text="人在学习"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:elevation="5dp"
+                android:gravity="center"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="vertical"
+                android:background="@drawable/course_shape"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:textSize="25sp"
+                    android:text="课程简介"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+
+                        android:id="@+id/course"
+                        android:src="@drawable/gaoshu"
+                        android:layout_width="match_parent"
+                        android:layout_height="240dp"/>
+
+
+                    <TextView
+                        android:textSize="20sp"
+                        android:text="高等数学是指相对于初等数学和中等数学而言，数学的对象及方法较为繁杂的一部分，中学的代数、几何以及简单的集合论初步、逻辑初步称为中等数学，将其作为中小学阶段的初等数学与大学阶段的高等数学的过渡。 通常认为，高等数学是由微积分学，较深入的代数学、几何学以及它们之间的交叉内容所形成的一门基础学科。"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
 

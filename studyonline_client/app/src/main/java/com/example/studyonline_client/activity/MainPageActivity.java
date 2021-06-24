@@ -75,14 +75,14 @@ public class MainPageActivity extends AppCompatActivity {
             case R.id.navigation_item2:
                 fragmentTransaction.hide(courseLiveFragment).hide(scoreAnalysisFragment).hide(personalCenterFragment);
                 fragmentTransaction.show(friendContactFragment);
-                textView.setText(" 交流 ");
+                textView.setText("交流中心");
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
             case R.id.navigation_item3:
                 fragmentTransaction.hide(courseLiveFragment).hide(friendContactFragment).hide(personalCenterFragment);
                 fragmentTransaction.show(scoreAnalysisFragment);
-                textView.setText(" 成绩 ");
+                textView.setText("成绩分析");
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
