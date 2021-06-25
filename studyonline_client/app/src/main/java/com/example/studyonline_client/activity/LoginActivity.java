@@ -74,20 +74,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         register.setOnClickListener(this);
         login.setOnClickListener(this);
 
-
     }
-
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_login:
                 if(!teacher&&!student){
-                    ToastUtil toastUtil = new ToastUtil();
-                    toastUtil.show("请选择你的身份",LoginActivity.this);
-
+                    ToastUtil.show("请选择你的身份",LoginActivity.this);
                 }else if(teacher&&student){
-                    Toast.makeText(LoginActivity.this,"只能选择一种身份",Toast.LENGTH_SHORT).show();
+                    ToastUtil.show("只能选择一个身份",LoginActivity.this);
                 }else if(teacher){
                     Intent intent = new Intent(LoginActivity.this, TeacherActivity.class);
                     startActivity(intent);

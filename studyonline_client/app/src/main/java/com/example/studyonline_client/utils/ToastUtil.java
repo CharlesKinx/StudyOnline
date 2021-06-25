@@ -14,7 +14,7 @@ import kotlin.jvm.internal.PropertyReference0Impl;
 
 public class ToastUtil {
 
-    public void show(String msg,Context context) {
+    public static void show(String msg,Context context) {
         show(msg, Toast.LENGTH_SHORT,context);
     }
 
@@ -23,7 +23,7 @@ public class ToastUtil {
      *
      * @param msg
      */
-    public void showLong(String msg,Context context) {
+    public static void showLong(String msg,Context context) {
         show(msg, Toast.LENGTH_LONG,context);
     }
 
@@ -41,7 +41,7 @@ public class ToastUtil {
         title.setText(massage);
         Toast toast = new Toast(context);
         //设置Toast要显示的位置，水平居中并在底部，X轴偏移0个单位，Y轴偏移70个单位，
-        toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 90);
+        toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM, 0, 70);
         //设置显示时间
         toast.setDuration(show_length);
         toast.setView(view);

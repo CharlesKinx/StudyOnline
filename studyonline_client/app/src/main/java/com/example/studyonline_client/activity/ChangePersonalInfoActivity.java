@@ -19,7 +19,6 @@ public class ChangePersonalInfoActivity extends AppCompatActivity {
     private void initView(){
         textViewBack = findViewById(R.id.change_back);
 
-
     }
 
 

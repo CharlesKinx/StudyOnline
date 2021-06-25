@@ -10,11 +10,11 @@ import androidx.annotation.Nullable;
 
 import com.example.studyonline_client.R;
 
-public class FriendContactFragment extends Fragment {
+public class ClassContactFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_friend_contact,container,false);
+        View view = inflater.inflate(R.layout.fragment_class_center,container,false);
         return view;
     }
 }

@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:text="友圈界面"
+        android:text="班课中心"
         android:textSize="40sp"
         android:layout_gravity="center"
         android:textColor="@color/black"
