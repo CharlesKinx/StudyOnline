@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:elevation="6dp"
+    android:elevation="4dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:orientation="horizontal"
-    android:background="@drawable/login_et_style"
+    android:background="@drawable/toast_shape"
     >
 
     <ImageView
+
         android:id="@+id/toast_img"
         android:src="@drawable/logo"
         android:layout_width="30dp"
@@ -16,12 +18,11 @@
 
 
     <TextView
-        android:textSize="15sp"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
         android:gravity="center"
         android:id="@+id/toast_text"
         android:layout_width="wrap_content"
