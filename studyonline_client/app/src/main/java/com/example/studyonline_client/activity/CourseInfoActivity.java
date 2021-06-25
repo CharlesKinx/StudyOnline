@@ -47,8 +47,8 @@ public class CourseInfoActivity extends AppCompatActivity {
         textView = findViewById(R.id.course_back);
         final TabLayout tab_layout = findViewById(R.id.tab_layout);
         final ViewPager viewPager = findViewById(R.id.viewPager);
-        MyAdapter fragmentAdater = new  MyAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(fragmentAdater);
+        MyAdapter fragmentAdapter = new  MyAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(fragmentAdapter);
         tab_layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -87,7 +87,6 @@ public class CourseInfoActivity extends AppCompatActivity {
 
 
     }
-
 
     public class MyAdapter extends FragmentPagerAdapter {
         public MyAdapter(FragmentManager fm) {

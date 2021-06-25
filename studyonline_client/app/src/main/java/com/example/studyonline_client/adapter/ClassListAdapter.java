@@ -19,6 +19,12 @@ public class ClassListAdapter extends BaseAdapter {
     private TextView className;
     private TextView classNum;
 
+    public ClassListAdapter(Context context,ArrayList<ClassInformation> arrayList){
+        this.context = context;
+        this.classInformationArrayList  = arrayList;
+
+    }
+
     private void initView(View view){
         className = view.findViewById(R.id.class_name);
         classNum = view.findViewById(R.id.class_number);
@@ -50,7 +56,7 @@ public class ClassListAdapter extends BaseAdapter {
         initView(view);
 
         className.setText(classInformationArrayList.get(position).getClassName());
-        classNum.setText(classInformationArrayList.get(position).getClassStudentNum());
+        classNum.setText(String.valueOf(classInformationArrayList.get(position).getClassStudentNum()));
         return view;
     }
 }
