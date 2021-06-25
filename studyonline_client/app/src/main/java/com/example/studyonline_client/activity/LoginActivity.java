@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.teacher.TeacherActivity;
+import com.example.studyonline_client.utils.ToastUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -82,7 +83,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.btn_login:
                 if(!teacher&&!student){
-                    Toast.makeText(LoginActivity.this,"请选择你的身份",Toast.LENGTH_SHORT).show();
+                    ToastUtil toastUtil = new ToastUtil();
+                    toastUtil.show("请选择你的身份",LoginActivity.this);
+
                 }else if(teacher&&student){
                     Toast.makeText(LoginActivity.this,"只能选择一种身份",Toast.LENGTH_SHORT).show();
                 }else if(teacher){
@@ -99,7 +102,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.tx_login_resister:
                 Intent intent1 = new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent1);
-                finish();
                 break;
         }
     }
