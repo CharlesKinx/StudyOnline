@@ -25,6 +25,7 @@
         <activity android:name=".activity.MainPageActivity"></activity>
         <activity android:name=".activity.CourseInfoActivity"></activity>
         <activity android:name=".activity.ChangePersonalInfoActivity"></activity>
+        <activity android:name=".teacher.TeacherActivity"></activity>
     </application>
 
 </manifest>

@@ -161,9 +161,35 @@
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:textColor="#919191"
+                android:id="@+id/checkbox_student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是学生"
+                android:theme="@style/CheckBoxTheme"
+                />
+
+            <CheckBox
+                android:textColor="#919191"
+                android:id="@+id/checkbox_teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/CheckBoxTheme"
+                android:text="我是教师"
+                />
+        </LinearLayout>
+
         <Button
             android:id="@+id/btn_register"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:textSize="17sp"
             android:text="注      册"
             android:textColor="#CD2AA5"
