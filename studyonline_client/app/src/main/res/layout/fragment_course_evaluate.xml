@@ -26,17 +26,26 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
                         android:layout_height="55dp"
                         android:text="评分"
                         android:textSize="30sp" />
 
-
+                    <TextView
+                        android:textSize="20sp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text="80"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -68,7 +77,6 @@
                 android:background="@drawable/login_et_style"
                 android:elevation="5dp"
                 android:orientation="vertical">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,6 +136,7 @@
 
                 </LinearLayout>
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -166,7 +175,6 @@
 
                 </LinearLayout>
 
-                `
             </LinearLayout>
 
 

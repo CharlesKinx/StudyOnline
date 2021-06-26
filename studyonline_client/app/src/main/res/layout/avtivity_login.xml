@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#4B67DAE8"
+
     >
 
     <TextView
@@ -131,7 +131,7 @@
         android:layout_marginTop="10dp"
         android:textSize="17sp"
         android:text="登    录"
-        android:textColor="#846DEA"
+        android:textColor="#838383"
         android:background="@drawable/login_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

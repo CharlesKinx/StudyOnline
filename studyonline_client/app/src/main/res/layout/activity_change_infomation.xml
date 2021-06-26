@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#B494FA8D"
+
     >
 
 
@@ -202,7 +202,7 @@
             android:textSize="17sp"
             android:text="确       认"
             android:textColor="#000000"
-            android:background="@drawable/confirm_btn"
+            android:background="@drawable/login_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
