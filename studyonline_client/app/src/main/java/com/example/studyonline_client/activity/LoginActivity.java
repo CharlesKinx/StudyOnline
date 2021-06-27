@@ -14,11 +14,18 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.studyonline_client.R;
+import com.example.studyonline_client.model.HttpResultInfo;
 import com.example.studyonline_client.teacher.TeacherActivity;
+import com.example.studyonline_client.utils.OkHttpUtil;
 import com.example.studyonline_client.utils.ToastUtil;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,6 +50,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private boolean teacher=false;
     private boolean student=false;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +98,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     startActivity(intent);
                     finish();
                 }else {
+                    HttpResultInfo httpResultInfo = postAsny("url","json");
                     Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
                     startActivity(intent);
                     finish();
@@ -100,6 +110,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent1);
                 break;
         }
+    }
+
+
+    private HttpResultInfo postAsny(String url, String json){
+
+        HttpResultInfo httpResultInfo = new HttpResultInfo();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpUtil.usePost("url","json").enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+
+                    }
+                });
+            }
+        }).start();
+        return httpResultInfo;
     }
 
 }
