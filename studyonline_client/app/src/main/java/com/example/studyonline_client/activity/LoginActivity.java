@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     startActivity(intent);
                     finish();
                 }else {
-                    HttpResultInfo httpResultInfo = postAsny("url","json");
+                    //HttpResultInfo httpResultInfo = postAsny("url","json");
                     Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
                     startActivity(intent);
                     finish();

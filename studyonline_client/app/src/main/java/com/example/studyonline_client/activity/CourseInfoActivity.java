@@ -1,8 +1,10 @@
 package com.example.studyonline_client.activity;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -21,10 +23,12 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseInfoActivity extends AppCompatActivity {
+public class CourseInfoActivity extends AppCompatActivity implements View.OnClickListener {
 
     private List<androidx.fragment.app.Fragment> fragmentList = new ArrayList<>();
     private TextView textView;
+    private Button beginStudy;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,17 +38,18 @@ public class CourseInfoActivity extends AppCompatActivity {
         fragmentList.add(new CourseEvaluateFragment());
         fragmentList.add(new CourseArrangementFragment());
         initView();
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
+        textView.setOnClickListener(this);
+        beginStudy.setOnClickListener(this);
 
     }
 
+
+
     private void initView() {
         textView = findViewById(R.id.course_back);
+        beginStudy = findViewById(R.id.btn_begin_study);
+
         final TabLayout tab_layout = findViewById(R.id.tab_layout);
         final ViewPager viewPager = findViewById(R.id.viewPager);
         MyAdapter fragmentAdapter = new  MyAdapter(getSupportFragmentManager());
@@ -87,6 +92,20 @@ public class CourseInfoActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_begin_study:
+                Intent intent = new Intent(CourseInfoActivity.this,CourseLiveActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.course_back:
+                finish();
+                break;
+        }
+    }
+
 
     public class MyAdapter extends FragmentPagerAdapter {
         public MyAdapter(FragmentManager fm) {
