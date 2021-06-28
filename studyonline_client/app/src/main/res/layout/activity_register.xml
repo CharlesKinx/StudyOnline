@@ -9,7 +9,7 @@
 
     <TextView
         android:elevation="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
         android:text=" 注  册 "
         android:textSize="40sp"
@@ -20,8 +20,7 @@
 
 
     <ImageView
-
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/logo"
         android:layout_width="100dp"
@@ -68,6 +67,37 @@
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/username"
+                android:layout_gravity="center"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+            <TextView
+                android:text="用户名："
+                android:textSize="15sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_width="80dp"
+                android:layout_height="40dp"/>
+
+            <EditText
+                android:hint="请输入用户名"
+                android:id="@+id/et_register_user_name"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:layout_width="220dp"
+                android:maxLines="1"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_marginTop="15dp"
@@ -91,7 +121,38 @@
                 android:hint="请输入手机号"
                 android:id="@+id/et_register_telephone"
                 android:textSize="15sp"
-                android:inputType="textPassword"
+                android:inputType="number"
+                android:layout_width="220dp"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/age"
+                android:layout_gravity="center"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+            <TextView
+                android:text="年龄："
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="100dp"
+                android:layout_height="40dp"/>
+
+            <EditText
+                android:hint="请输入年龄"
+                android:id="@+id/et_register_age"
+                android:textSize="15sp"
+                android:inputType="number"
                 android:layout_width="220dp"
                 android:layout_gravity="center"
                 android:maxLines="1"
@@ -163,11 +224,50 @@
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/boy"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <CheckBox
+                android:textColor="#919191"
+                android:id="@+id/register_checkbox_boy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是男生"
+                android:theme="@style/CheckBoxTheme"
+                />
+
+            <ImageView
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/girl"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <CheckBox
+                android:textColor="#919191"
+                android:id="@+id/register_checkbox_girl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/CheckBoxTheme"
+                android:text="我是女生"
+                />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:src="@drawable/student"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
             <CheckBox
                 android:textColor="#919191"
                 android:id="@+id/register_checkbox_student"
@@ -176,7 +276,11 @@
                 android:text="我是学生"
                 android:theme="@style/CheckBoxTheme"
                 />
-
+            <ImageView
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/teacher"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
             <CheckBox
                 android:textColor="#919191"
                 android:id="@+id/register_checkbox_teacher"

@@ -13,13 +13,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.model.HttpResultInfo;
+import com.example.studyonline_client.model.StudentInfo;
 import com.example.studyonline_client.teacher.TeacherActivity;
+import com.example.studyonline_client.utils.JsonUtil;
 import com.example.studyonline_client.utils.OkHttpUtil;
 import com.example.studyonline_client.utils.ToastUtil;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +34,7 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static String url = "http://10.0.116.3:8181/user/";
     @BindView(R.id.btn_login)
     Button login;
 
@@ -47,18 +53,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @BindView(R.id.checkbox_teacher)
     CheckBox teacherCheckBox;
 
+    public static StudentInfo studentInfo;
 
     private boolean teacher=false;
     private boolean student=false;
-
+    private HttpResultInfo httpResultInfo;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.avtivity_login);
-        ButterKnife.bind(this);
 
+        ButterKnife.bind(this);
+        httpResultInfo = new HttpResultInfo();
+        studentInfo = new StudentInfo();
         studentCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -89,7 +98,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_login:
-                if(!teacher&&!student){
+                if(editTextUser.getText().toString().equals("")){
+                    ToastUtil.show("账号不能为空!",LoginActivity.this);
+                }else if(editTextPassword.getText().toString().equals("")){
+                    ToastUtil.show("密码不能为空!",LoginActivity.this);
+                }else if(!teacher&&!student){
                     ToastUtil.show("请选择你的身份",LoginActivity.this);
                 }else if(teacher&&student){
                     ToastUtil.show("只能选择一个身份",LoginActivity.this);
@@ -98,10 +111,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     startActivity(intent);
                     finish();
                 }else {
-                    //HttpResultInfo httpResultInfo = postAsny("url","json");
-                    Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
-                    startActivity(intent);
-                    finish();
+                    Map<String,String> map = new HashMap<String,String>();
+                    map.put("account",editTextUser.getText().toString());
+                    map.put("password",editTextPassword.getText().toString());
+
+                    postLogin(JsonUtil.mapToJson(map));
+
                 }
                 break;
 
@@ -113,26 +128,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    private HttpResultInfo postAsny(String url, String json){
-
-        HttpResultInfo httpResultInfo = new HttpResultInfo();
-        new Thread(new Runnable() {
+    private void postLogin(String json){
+        OkHttpUtil.usePost(url+"login",json).enqueue(new Callback() {
             @Override
-            public void run() {
-                OkHttpUtil.usePost("url","json").enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-
-                    }
-                });
+            public void onFailure(Call call, IOException e) {
+                httpResultInfo.setMsg("网络错误，请连接网络！");
             }
-        }).start();
-        return httpResultInfo;
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result = response.body().string();
+                httpResultInfo = (HttpResultInfo) JSONObject.parseObject(result,HttpResultInfo.class);
+                if(httpResultInfo.getMsg().equals("登录成功")){
+                    String userString = JsonUtil.objectToJson(httpResultInfo.getData());
+                    studentInfo = JSONObject.parseObject(userString,StudentInfo.class);
+                    Intent intent = new Intent(LoginActivity.this,MainPageActivity.class);
+                    startActivity(intent);
+                    runOnUiThread(()->{
+                        ToastUtil.show(httpResultInfo.getMsg(),LoginActivity.this);
+                    });
+                }else{
+                    runOnUiThread(()->{
+                        ToastUtil.show(httpResultInfo.getMsg(),LoginActivity.this);
+                    });
+                }
+            }
+        });
     }
 
 }

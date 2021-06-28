@@ -52,10 +52,10 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/user_account"
                 android:layout_marginRight="10dp"
                 android:gravity="right"
                 android:textSize="16sp"
-                android:text="123456"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -85,11 +85,10 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/user_name"
                 android:layout_marginRight="10dp"
                 android:gravity="right"
-                android:text="123456"
                 android:textSize="16sp"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -120,11 +119,10 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/user_telephone"
                 android:layout_marginRight="10dp"
                 android:gravity="right"
-                  android:text="123456"
                 android:textSize="16sp"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -155,14 +153,57 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/user_age"
                 android:layout_marginRight="10dp"
                 android:gravity="right"
                 android:textSize="16sp"
-                android:text="123456"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
+        <View
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#000000"
+            ></View>
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:text="性别"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:gravity="right"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/user_sex"
+                    android:layout_marginRight="10dp"
+                    android:gravity="right"
+                    android:textSize="16sp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

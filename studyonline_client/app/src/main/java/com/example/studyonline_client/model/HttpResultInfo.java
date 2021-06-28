@@ -5,6 +5,15 @@ public class HttpResultInfo<T> {
     private T data;
     private boolean success;
 
+    @Override
+    public String toString() {
+        return "HttpResultInfo{" +
+                "msg='" + msg + '\'' +
+                ", data=" + data +
+                ", success=" + success +
+                '}';
+    }
+
     public String getMsg() {
         return msg;
     }

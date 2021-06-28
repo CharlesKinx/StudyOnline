@@ -11,7 +11,7 @@ import okhttp3.RequestBody;
 public class OkHttpUtil {
 
     private static OkHttpClient okHttpClient;
-    private static final int TIME_OUT = 30; //超时时间
+    private static final int TIME_OUT = 5; //超时时间
 
     static {
 

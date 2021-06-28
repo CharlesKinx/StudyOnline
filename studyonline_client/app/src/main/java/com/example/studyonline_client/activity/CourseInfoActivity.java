@@ -1,7 +1,10 @@
 package com.example.studyonline_client.activity;
 
+import android.Manifest;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +37,13 @@ public class CourseInfoActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]
+                        {Manifest.permission.CAMERA}, 1);
+            }
+        }
         fragmentList.add(new CourseInfoFragment());
         fragmentList.add(new CourseEvaluateFragment());
         fragmentList.add(new CourseArrangementFragment());
@@ -88,7 +98,6 @@ public class CourseInfoActivity extends AppCompatActivity implements View.OnClic
 
             }
         });
-
 
 
     }

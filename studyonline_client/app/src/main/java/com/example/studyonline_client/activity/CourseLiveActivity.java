@@ -1,6 +1,9 @@
 package com.example.studyonline_client.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -41,10 +44,13 @@ public class CourseLiveActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_course_live);
         TXLiveBase.getInstance().setLicence(this, licenceUrl, licenceKey);
         initView();
         mLivePusher.setConfig(mLivePushConfig);
+
+
         mLivePusher.startCameraPreview(pushView);
         
         String url ="rtmp://144585.livepush.myqcloud.com/live/demo?txSecret=839e872789fa82d6e97fe1554cd068a5&txTime=60D94364";
@@ -52,8 +58,7 @@ public class CourseLiveActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //mLivePusher.startPusher(url.trim());
+                mLivePusher.startPusher(url.trim());
             }
         });
     }
