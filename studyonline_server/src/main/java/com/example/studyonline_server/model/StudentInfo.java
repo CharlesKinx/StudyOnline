@@ -16,5 +16,6 @@ public class StudentInfo {
     private String telephone;
     private String name;
     private int age;
+    private int role;
 
 }
