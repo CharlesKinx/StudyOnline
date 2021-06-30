@@ -3,6 +3,7 @@ package com.example.studyonline_server.service.impl;
 import com.example.studyonline_server.dto.CourseListDTO;
 import com.example.studyonline_server.mapper.CourseListMapper;
 import com.example.studyonline_server.model.CourseInfo;
+import com.example.studyonline_server.model.ResultInfo;
 import com.example.studyonline_server.model.TeacherInfo;
 import com.example.studyonline_server.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ public class CourseServiceImpl implements CourseService {
 
     @Autowired
     private CourseListMapper courseListMapper;
+
+
+
+
 
     @Override
     public ArrayList<CourseListDTO> getCourseList() {
@@ -32,6 +37,12 @@ public class CourseServiceImpl implements CourseService {
             courseListDTOArrayList.add(courseListDTO);
         }
         return courseListDTOArrayList;
+    }
+
+    @Override
+    public CourseInfo getCourseInfo(int id) {
+        CourseInfo courseInfo = courseListMapper.findById(id);
+        return courseInfo;
     }
 
 

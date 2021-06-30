@@ -19,4 +19,11 @@ public interface CourseListMapper {
 
     @Select("select * from teacher")
     ArrayList<TeacherInfo> findAllTeacher();
+
+    @Select("select * from course where id = #{id}")
+    @Results({
+            @Result(id=true,property="id",column="id"),
+            @Result(property="viewNumber",column="view_number")
+    })
+    CourseInfo findById(int id);
 }

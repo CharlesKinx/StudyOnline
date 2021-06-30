@@ -11,6 +11,7 @@ import java.util.ArrayList;
 @Setter
 @ToString
 public class CourseListDTO {
+
     private String name;
     private int id;
     private String teacherName;
