@@ -18,7 +18,8 @@ public class JsonUtil {
     }
 
     public static String mapToJson(Map<String,String> map){
-
         return JSON.toJSONString(map);
     }
+
+
 }

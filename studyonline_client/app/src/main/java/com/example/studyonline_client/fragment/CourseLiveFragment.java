@@ -79,6 +79,8 @@ public class CourseLiveFragment extends ListFragment {
         CourseInfo courseInfo = courseInfoArrayList.get(position);
         Intent intent = new Intent(getActivity(), CourseInfoActivity.class);
         intent.putExtra("name",courseInfo.getTeacherName());
+        intent.putExtra("id",courseInfo.getId());
+
         startActivity(intent);
     }
 }

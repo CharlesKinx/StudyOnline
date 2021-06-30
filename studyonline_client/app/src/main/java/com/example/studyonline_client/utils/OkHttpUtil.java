@@ -1,5 +1,11 @@
 package com.example.studyonline_client.utils;
 
+import com.alibaba.fastjson.JSON;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -45,6 +51,15 @@ public class OkHttpUtil {
 
     public static Call useGet(String url){
         Call call = okHttpClient.newCall(getRequest(url));
+        return call;
+    }
+
+    public static Call usePostById(String url,int id){
+        Map<String,Integer> map = new HashMap<>();
+        map.put("id",id);
+        String json = JSON.toJSONString(map);
+        System.out.println(json);
+        Call call = usePost(url,json);
         return call;
     }
 }
