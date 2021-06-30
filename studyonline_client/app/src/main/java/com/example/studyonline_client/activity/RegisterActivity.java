@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     CheckBox girlCheckBox;
 
 
-    private String url = "http://10.0.116.3:8181/user/register";
+    private String url = "http://10.0.116.8:8181/user/register";
 
     private HttpResultInfo httpResultInfo;
     private boolean teacher=false;

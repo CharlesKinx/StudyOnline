@@ -12,12 +12,19 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.activity.CourseInfoActivity;
 import com.example.studyonline_client.adapter.CourseListAdapter;
 import com.example.studyonline_client.model.CourseInfo;
+import com.example.studyonline_client.utils.OkHttpUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class CourseLiveFragment extends ListFragment {
 
@@ -25,7 +32,7 @@ public class CourseLiveFragment extends ListFragment {
     private CourseListAdapter courseListAdapter;
     private ArrayList<CourseInfo> courseInfoArrayList;
     private CourseInfo courseInfo;
-
+    public static String url = "http://10.0.116.8:8181/course";
     private void getData(){
         courseInfoArrayList = new ArrayList<>();
         courseInfo = new CourseInfo();
@@ -41,8 +48,28 @@ public class CourseLiveFragment extends ListFragment {
         View view = inflater.inflate(R.layout.fragment_courselive,container,false);
         listView = view.findViewById(android.R.id.list);
         getData();
-        courseListAdapter = new CourseListAdapter(getActivity(),courseInfoArrayList);
-        listView.setAdapter(courseListAdapter);
+
+        OkHttpUtil.useGet(url+"/list").enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println(e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result = response.body().string();
+                courseInfoArrayList = (ArrayList<CourseInfo>) JSONObject.parseArray(result,CourseInfo.class);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        courseListAdapter = new CourseListAdapter(getActivity(),courseInfoArrayList);
+                        listView.setAdapter(courseListAdapter);
+                    }
+                });
+            }
+        });
+
+
         return view;
     }
 
@@ -51,6 +78,7 @@ public class CourseLiveFragment extends ListFragment {
         super.onListItemClick(l, v, position, id);
         CourseInfo courseInfo = courseInfoArrayList.get(position);
         Intent intent = new Intent(getActivity(), CourseInfoActivity.class);
+        intent.putExtra("name",courseInfo.getTeacherName());
         startActivity(intent);
     }
 }

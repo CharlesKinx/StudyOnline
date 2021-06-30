@@ -32,8 +32,19 @@ public class OkHttpUtil {
 
     }
 
+    private static Request getRequest(String url){
+        return new Request.Builder()
+                .url(url)
+                .build();
+    }
+
     public static Call usePost(String url,String json){
         Call call = okHttpClient.newCall(getRequest(url,json));
+        return call;
+    }
+
+    public static Call useGet(String url){
+        Call call = okHttpClient.newCall(getRequest(url));
         return call;
     }
 }

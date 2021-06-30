@@ -126,7 +126,7 @@
                 android:hint="请输入要修改的手机号"
                 android:id="@+id/et_change_telephone"
                 android:textSize="15sp"
-                android:inputType="textPassword"
+                android:inputType="number"
                 android:layout_width="220dp"
                 android:layout_gravity="center"
                 android:maxLines="1"
