@@ -1,6 +1,6 @@
 package com.example.studyonline_client.model;
 
-public class ClassArrangement {
+public class CourseArrangement {
 
     private int id;
     private int courseId;

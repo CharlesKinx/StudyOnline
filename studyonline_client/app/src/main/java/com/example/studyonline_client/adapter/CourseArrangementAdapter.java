@@ -12,20 +12,25 @@ import com.example.studyonline_client.model.CourseArrangement;
 
 import java.util.ArrayList;
 
-public class ClassArrangementAdapter extends BaseAdapter {
+public class CourseArrangementAdapter extends BaseAdapter {
 
     private ArrayList<CourseArrangement> courseArrangementArrayList;
     private Context context;
     private TextView textView;
 
-    public ClassArrangementAdapter(Context context,ArrayList<CourseArrangement> arrangements){
+    public CourseArrangementAdapter(Context context, ArrayList<CourseArrangement> arrangements){
         this.courseArrangementArrayList = arrangements;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        if(courseArrangementArrayList == null){
+            return 0;
+        }else{
+            return courseArrangementArrayList.size();
+        }
+
     }
 
     @Override
@@ -46,6 +51,6 @@ public class ClassArrangementAdapter extends BaseAdapter {
         textView = view.findViewById(R.id.arrange_content);
         textView.setText(courseArrangementArrayList.get(position).getContent());
 
-        return null;
+        return view;
     }
 }

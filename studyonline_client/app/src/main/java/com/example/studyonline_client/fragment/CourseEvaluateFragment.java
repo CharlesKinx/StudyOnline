@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -17,6 +18,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.utils.BarChartUtil;
+import com.example.studyonline_client.utils.ToastUtil;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -37,28 +39,19 @@ import java.util.Random;
 
 public class CourseEvaluateFragment extends Fragment implements View.OnClickListener {
 
-    private RatingReviews ratingReviews;
     private HorizontalBarChart horizontalBarChart;
     private List<BarEntry> list;
-    private ImageButton buttonOne;
-    private ImageButton buttonTwo;
-    private ImageButton buttonThree;
-    private ImageButton buttonFour;
-    private ImageButton buttonFive;
-    private LinearLayout linearLayoutView;
+
+    private RatingBar ratingBar;
 
     private void initView(View view){
         horizontalBarChart = view.findViewById(R.id.hor_chart);
-        buttonOne = view.findViewById(R.id.one_star);
-        buttonTwo = view.findViewById(R.id.two_star);
-        buttonThree = view.findViewById(R.id.three_star);
-        buttonFour = view.findViewById(R.id.four_star);
-        buttonFive = view.findViewById(R.id.five_star);
-        linearLayoutView = view.findViewById(R.id.dis_view);
+        ratingBar = view.findViewById(R.id.ll_rb_star);
     }
 
 
-    private void showBarChart(){
+    private void showBarChart()
+    {
 
         String[] labels = {"",
                 "5★ ",
@@ -124,43 +117,23 @@ public class CourseEvaluateFragment extends Fragment implements View.OnClickList
 
         initView(view);
         showBarChart();
-        buttonOne.setOnClickListener(this);
-        buttonTwo.setOnClickListener(this);
-        buttonThree.setOnClickListener(this);
-        buttonFour.setOnClickListener(this);
-        buttonFive.setOnClickListener(this);
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                ToastUtil.show("你给本课程评了"+rating+"星，谢谢您的评分",getContext());
+                ratingBar.setIsIndicator(true);
+
+                //linearLayoutView.setVisibility(View.GONE);
+            }
+        });
         return view;
     }
 
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.one_star:
-                buttonOne.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                break;
-            case R.id.two_star:
-                buttonTwo.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                buttonOne.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                break;
-            case R.id.three_star:
-                    buttonTwo.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                    buttonOne.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                    buttonThree.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                break;
-            case R.id.four_star:
-                    buttonFour.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                    buttonTwo.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                    buttonOne.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                    buttonThree.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                    linearLayoutView.setVisibility(View.GONE);
-                break;
-            case R.id.five_star:
-                    buttonFour.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                    buttonTwo.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                    buttonOne.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                    buttonThree.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                    buttonFive.setBackground(getResources().getDrawable(R.drawable.ok_star));
-                break;
-        }
+
     }
 }

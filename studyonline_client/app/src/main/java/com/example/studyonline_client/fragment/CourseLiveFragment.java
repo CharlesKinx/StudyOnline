@@ -34,7 +34,7 @@ public class CourseLiveFragment extends ListFragment {
     private CourseInfo courseInfo;
     public static String url = "http://10.0.116.13:8181/course";
     private void getData(){
-        courseInfoArrayList = new ArrayList<>();
+
         courseInfo = new CourseInfo();
         courseInfo.setName("大学英语");
         courseInfo.setTime("2021/6/22");
@@ -47,8 +47,7 @@ public class CourseLiveFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_courselive,container,false);
         listView = view.findViewById(android.R.id.list);
-        getData();
-
+        courseInfoArrayList = new ArrayList<>();
         OkHttpUtil.useGet(url+"/list").enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -59,7 +58,7 @@ public class CourseLiveFragment extends ListFragment {
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
                 courseInfoArrayList = (ArrayList<CourseInfo>) JSONObject.parseArray(result,CourseInfo.class);
-                System.out.println(courseInfoArrayList.get(2));
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

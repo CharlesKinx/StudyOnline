@@ -60,8 +60,6 @@ public class  CourseInfoFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String imgUrl = response.body().string();
-                System.out.println(imgUrl);
-
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -81,7 +79,6 @@ public class  CourseInfoFragment extends Fragment {
 
         Intent intent = getActivity().getIntent();
         String teacherName = intent.getStringExtra("name");
-        System.out.println(teacherName);
         int id = intent.getIntExtra("id",0);
         courseTeacherName.setText(teacherName);
 
@@ -94,7 +91,6 @@ public class  CourseInfoFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
-                System.out.println(result);
                 courseInfo = JSONObject.parseObject(result, CourseInformation.class);
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
