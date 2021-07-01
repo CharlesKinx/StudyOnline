@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
-public class StudentUserController {
+public class UserAccountController {
 
     @Autowired
     private AccountServiceImpl accountService;
@@ -32,6 +32,7 @@ public class StudentUserController {
 
     @PostMapping("/login")
     public ResultInfo login(@RequestBody String loginInfo){
+
         return accountService.loginStudent(loginInfo);
     }
 
