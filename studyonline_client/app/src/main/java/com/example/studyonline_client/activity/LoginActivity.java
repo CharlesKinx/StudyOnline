@@ -34,7 +34,7 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static String url = "http://10.0.116.8:8181/user/";
+    public static String url = "http://10.0.116.13:8181/user/";
     @BindView(R.id.btn_login)
     Button login;
 
@@ -114,7 +114,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Map<String,String> map = new HashMap<String,String>();
                     map.put("account",editTextUser.getText().toString());
                     map.put("password",editTextPassword.getText().toString());
-
                     postLogin(JsonUtil.mapToJson(map));
 
                 }
@@ -133,6 +132,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onFailure(Call call, IOException e) {
                 httpResultInfo.setMsg("网络错误，请连接网络！");
+                runOnUiThread(()->{
+                    ToastUtil.show(httpResultInfo.getMsg(),LoginActivity.this);
+                });
             }
 
             @Override

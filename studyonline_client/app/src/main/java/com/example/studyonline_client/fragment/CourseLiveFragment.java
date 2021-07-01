@@ -32,7 +32,7 @@ public class CourseLiveFragment extends ListFragment {
     private CourseListAdapter courseListAdapter;
     private ArrayList<CourseInfo> courseInfoArrayList;
     private CourseInfo courseInfo;
-    public static String url = "http://10.0.116.8:8181/course";
+    public static String url = "http://10.0.116.13:8181/course";
     private void getData(){
         courseInfoArrayList = new ArrayList<>();
         courseInfo = new CourseInfo();
