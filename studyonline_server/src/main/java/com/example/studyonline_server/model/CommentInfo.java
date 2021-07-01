@@ -10,5 +10,9 @@ import lombok.ToString;
 @ToString
 
 public class CommentInfo {
-
+    private int id;
+    private int studentId;
+    private int courseId;
+    private String content;
+    private String time;
 }
