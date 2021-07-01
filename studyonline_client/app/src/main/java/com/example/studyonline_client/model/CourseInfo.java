@@ -4,7 +4,7 @@ public class CourseInfo {
     private int id;
     private String name;
     private String time;
-    private int teacherID;
+    private String imgUrl;
     private String teacherName;
 
     public String getTeacherName() {
@@ -39,11 +39,22 @@ public class CourseInfo {
         this.time = time;
     }
 
-    public int getTeacherID() {
-        return teacherID;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setTeacherID(int teacherID) {
-        this.teacherID = teacherID;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseInfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", time='" + time + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", teacherName='" + teacherName + '\'' +
+                '}';
     }
 }

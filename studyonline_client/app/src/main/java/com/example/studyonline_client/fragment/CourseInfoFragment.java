@@ -50,7 +50,7 @@ public class  CourseInfoFragment extends Fragment {
     }
 
     private void imgView(int id){
-        String imgUrl = CourseLiveFragment.url+"img";
+        String imgUrl = CourseLiveFragment.url+"/img";
         OkHttpUtil.usePostById(imgUrl,id).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -59,13 +59,13 @@ public class  CourseInfoFragment extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                byte[] bytes = response.body().bytes();
+                String imgUrl = response.body().string();
+                System.out.println(imgUrl);
 
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        GlideApp.with(getContext()).load(bytes).into(courseImg);
-                        //GlideApp.with(getContext()).load("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgss0.baidu.com%2F9vo3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F241f95cad1c8a786d814d6eb6709c93d70cf501c.jpg&refer=http%3A%2F%2Fgss0.baidu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627699586&t=fa8f55932b798ecd7832a3ca87e8ea11").into(courseImg);
+                        GlideApp.with(getContext()).load(imgUrl).into(courseImg);
                     }
                 });
             }

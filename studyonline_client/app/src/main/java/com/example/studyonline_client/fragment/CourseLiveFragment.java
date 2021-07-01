@@ -59,6 +59,7 @@ public class CourseLiveFragment extends ListFragment {
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
                 courseInfoArrayList = (ArrayList<CourseInfo>) JSONObject.parseArray(result,CourseInfo.class);
+                System.out.println(courseInfoArrayList.get(2));
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

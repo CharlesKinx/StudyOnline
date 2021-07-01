@@ -5,10 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.model.CourseInfo;
+import com.example.studyonline_client.utils.GlideApp;
 
 import java.util.ArrayList;
 
@@ -20,6 +22,7 @@ public class CourseListAdapter extends BaseAdapter {
     private TextView courseName;
     private TextView teacherName;
     private TextView time;
+    private ImageView imageView;
 
     public CourseListAdapter(Context context,ArrayList<CourseInfo> arrayList){
         this.context = context;
@@ -28,9 +31,10 @@ public class CourseListAdapter extends BaseAdapter {
     }
 
     private void initView(View view){
-        courseName = view.findViewById(R.id.course_name);
-        teacherName = view.findViewById(R.id.teacher_name);
-        time = view.findViewById(R.id.time);
+        courseName = view.findViewById(R.id.course_item_name);
+        teacherName = view.findViewById(R.id.teacher_item_name);
+        time = view.findViewById(R.id.course_item_time);
+        imageView = view.findViewById(R.id.course_item_img);
     }
 
     @Override
@@ -62,7 +66,7 @@ public class CourseListAdapter extends BaseAdapter {
         courseName.setText(courseInfoArrayList.get(position).getName());
         teacherName.setText(courseInfoArrayList.get(position).getTeacherName());
         time.setText(courseInfoArrayList.get(position).getTime());
-
+        GlideApp.with(context).load(courseInfoArrayList.get(position).getImgUrl()).into(imageView);
         return view;
     }
 }
