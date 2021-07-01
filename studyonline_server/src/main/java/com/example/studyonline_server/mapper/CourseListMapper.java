@@ -1,7 +1,7 @@
 package com.example.studyonline_server.mapper;
 
 
-import com.example.studyonline_server.dto.CourseListDTO;
+import com.example.studyonline_server.model.CourseArrangementInfo;
 import com.example.studyonline_server.model.CourseInfo;
 import com.example.studyonline_server.model.TeacherInfo;
 import org.apache.ibatis.annotations.*;
@@ -33,5 +33,8 @@ public interface CourseListMapper {
     @Select("select course_url from course where id = #{id}")
     String findImgUrl(@Param("id") int id);
 
+
+    @Select("select * from course_arrangement where courseId = #{courseId}")
+    ArrayList<CourseArrangementInfo> findCourseArrangement(int courseId);
 
 }

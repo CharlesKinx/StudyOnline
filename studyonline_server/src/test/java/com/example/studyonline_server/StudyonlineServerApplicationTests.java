@@ -2,6 +2,7 @@ package com.example.studyonline_server;
 
 import com.example.studyonline_server.dto.CourseListDTO;
 import com.example.studyonline_server.mapper.CourseListMapper;
+import com.example.studyonline_server.model.CourseArrangementInfo;
 import com.example.studyonline_server.service.impl.CourseServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ class StudyonlineServerApplicationTests {
     private CourseListMapper courseListMapper;
     @Test
     void findAll(){
-        ArrayList<CourseListDTO> courseListDTOArrayList = courseService.getCourseList();
-        for (CourseListDTO courseListDTO :courseListDTOArrayList){
+        ArrayList<CourseArrangementInfo> courseListDTOArrayList = courseListMapper.findCourseArrangement(1);
+        for (CourseArrangementInfo courseListDTO :courseListDTOArrayList){
             System.out.println(courseListDTO);
         }
     }

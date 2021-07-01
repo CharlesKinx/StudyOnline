@@ -2,6 +2,7 @@ package com.example.studyonline_server.service.impl;
 
 import com.example.studyonline_server.dto.CourseListDTO;
 import com.example.studyonline_server.mapper.CourseListMapper;
+import com.example.studyonline_server.model.CourseArrangementInfo;
 import com.example.studyonline_server.model.CourseInfo;
 import com.example.studyonline_server.model.ResultInfo;
 import com.example.studyonline_server.model.TeacherInfo;
@@ -50,6 +51,11 @@ public class CourseServiceImpl implements CourseService {
 
         return courseListMapper.findImgUrl(id);
 
+    }
+
+    @Override
+    public ArrayList<CourseArrangementInfo> getCourseArrangement(int id) {
+        return courseListMapper.findCourseArrangement(id);
     }
 
 

@@ -8,18 +8,18 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.studyonline_client.R;
-import com.example.studyonline_client.model.ClassArrangement;
+import com.example.studyonline_client.model.CourseArrangement;
 
 import java.util.ArrayList;
 
 public class ClassArrangementAdapter extends BaseAdapter {
 
-    private ArrayList<ClassArrangement> classArrangementArrayList;
+    private ArrayList<CourseArrangement> courseArrangementArrayList;
     private Context context;
     private TextView textView;
 
-    public ClassArrangementAdapter(Context context,ArrayList<ClassArrangement> arrangements){
-        this.classArrangementArrayList = arrangements;
+    public ClassArrangementAdapter(Context context,ArrayList<CourseArrangement> arrangements){
+        this.courseArrangementArrayList = arrangements;
         this.context = context;
     }
 
@@ -44,7 +44,7 @@ public class ClassArrangementAdapter extends BaseAdapter {
         View view = layoutInflater.inflate(R.layout.item_arrangement,null);
 
         textView = view.findViewById(R.id.arrange_content);
-        textView.setText(classArrangementArrayList.get(position).getContent());
+        textView.setText(courseArrangementArrayList.get(position).getContent());
 
         return null;
     }
