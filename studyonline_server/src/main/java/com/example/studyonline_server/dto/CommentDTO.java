@@ -10,6 +10,7 @@ import lombok.ToString;
 @ToString
 public class CommentDTO {
 
+    private int courseId;
     private String name;
     private String time;
     private String content;
