@@ -107,15 +107,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }else if(teacher&&student){
                     ToastUtil.show("只能选择一个身份",LoginActivity.this);
                 }else if(teacher){
-                    Intent intent = new Intent(LoginActivity.this, TeacherActivity.class);
-                    startActivity(intent);
-                    finish();
-                }else {
-                    Map<String,String> map = new HashMap<String,String>();
-                    map.put("account",editTextUser.getText().toString());
-                    map.put("password",editTextPassword.getText().toString());
-                    postLogin(JsonUtil.mapToJson(map));
+                    postLogin(JsonUtil.mapToJson(getLoginInfo()));
 
+                }else {
+                    postLogin(JsonUtil.mapToJson(getLoginInfo()));
                 }
                 break;
 
@@ -124,6 +119,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent1);
                 break;
         }
+    }
+
+
+    private Map<String,String> getLoginInfo(){
+        Map<String,String> map = new HashMap<String,String>();
+        map.put("account",editTextUser.getText().toString());
+        map.put("password",editTextPassword.getText().toString());
+        if(teacher){
+            map.put("role","2");
+        }else{
+            map.put("role","1");
+        }
+        return map;
+
     }
 
 
