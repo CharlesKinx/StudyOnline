@@ -1,5 +1,6 @@
 package com.example.studyonline_client.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Pair;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -17,7 +19,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.studyonline_client.R;
+import com.example.studyonline_client.activity.LoginActivity;
+import com.example.studyonline_client.model.CommentInfo;
 import com.example.studyonline_client.utils.BarChartUtil;
+import com.example.studyonline_client.utils.JsonUtil;
+import com.example.studyonline_client.utils.OkHttpUtil;
 import com.example.studyonline_client.utils.ToastUtil;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
@@ -33,20 +39,33 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.taufiqrahman.reviewratings.BarLabels;
 import com.taufiqrahman.reviewratings.RatingReviews;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class CourseEvaluateFragment extends Fragment implements View.OnClickListener {
 
     private HorizontalBarChart horizontalBarChart;
     private List<BarEntry> list;
-
     private RatingBar ratingBar;
+    private Button publishComment;
+    private EditText editTextComment;
+    private CommentInfo commentInfo;
+    private int courseId;
+    private String url = "http://10.0.116.13:8181/comment";
 
     private void initView(View view){
         horizontalBarChart = view.findViewById(R.id.hor_chart);
         ratingBar = view.findViewById(R.id.ll_rb_star);
+        publishComment = view.findViewById(R.id.btn_course_comment);
+        editTextComment = view.findViewById(R.id.et_course_comment);
+        commentInfo = new CommentInfo();
     }
 
 
@@ -117,7 +136,8 @@ public class CourseEvaluateFragment extends Fragment implements View.OnClickList
 
         initView(view);
         showBarChart();
-
+        Intent intent = getActivity().getIntent();
+        courseId = intent.getIntExtra("id",0);
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -134,6 +154,32 @@ public class CourseEvaluateFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()){
+            case R.id.btn_course_comment:
+                    SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String datetime = tempDate.format(new java.util.Date());
+                    commentInfo.setCourseId(courseId);
+                    commentInfo.setStudentId(LoginActivity.studentInfo.getId());
+                    commentInfo.setContent(editTextComment.getText().toString());
+                    commentInfo.setTime(datetime);
+                    postComment(commentInfo);
+                    break;
+        }
     }
+
+    private void postComment(CommentInfo commentInfo){
+        OkHttpUtil.usePost(url+"/publish", JsonUtil.objectToJson(commentInfo)).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+            }
+        });
+    }
+
+
 }
