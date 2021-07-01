@@ -9,6 +9,9 @@ import com.example.studyonline_server.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @Service
@@ -16,10 +19,6 @@ public class CourseServiceImpl implements CourseService {
 
     @Autowired
     private CourseListMapper courseListMapper;
-
-
-
-
 
     @Override
     public ArrayList<CourseListDTO> getCourseList() {
@@ -33,6 +32,7 @@ public class CourseServiceImpl implements CourseService {
             courseListDTO.setId(courseInfo.getId());
             courseListDTO.setName(courseInfo.getName());
             courseListDTO.setTime(courseInfo.getTime());
+            courseListDTO.setImgUrl(courseInfo.getCourseUrl());
             courseListDTO.setTeacherName(findTeacherName(courseInfo.getId(),teacherInfos));
             courseListDTOArrayList.add(courseListDTO);
         }
@@ -43,6 +43,13 @@ public class CourseServiceImpl implements CourseService {
     public CourseInfo getCourseInfo(int id) {
         CourseInfo courseInfo = courseListMapper.findById(id);
         return courseInfo;
+    }
+
+    @Override
+    public String getCourseImg(int id) {
+
+        return courseListMapper.findImgUrl(id);
+
     }
 
 

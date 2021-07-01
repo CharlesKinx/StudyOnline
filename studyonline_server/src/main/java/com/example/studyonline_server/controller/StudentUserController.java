@@ -32,9 +32,7 @@ public class StudentUserController {
 
     @PostMapping("/login")
     public ResultInfo login(@RequestBody String loginInfo){
-        System.out.println(loginInfo);
         return accountService.loginStudent(loginInfo);
     }
-
 
 }

@@ -9,6 +9,9 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @RestController
@@ -33,6 +36,14 @@ public class CourseController {
         JSONObject jsonObject = JSONObject.fromObject(string);
         int id = jsonObject.getInt("id");
         return courseService.getCourseInfo(id);
-
     }
+
+    @PostMapping("/img")
+    @ResponseBody
+    public String getCourseImg(@RequestBody String string) throws IOException {
+        JSONObject jsonObject = JSONObject.fromObject(string);
+        int id = jsonObject.getInt("id");
+        return courseService.getCourseImg(id);
+    }
+
 }

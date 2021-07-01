@@ -16,6 +16,7 @@ public class CourseListDTO {
     private int id;
     private String teacherName;
     private String time;
+    private String imgUrl;
 
 
 
