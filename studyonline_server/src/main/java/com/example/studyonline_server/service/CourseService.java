@@ -1,6 +1,7 @@
 package com.example.studyonline_server.service;
 
 import com.example.studyonline_server.dto.CourseListDTO;
+import com.example.studyonline_server.dto.CourseScoreDTO;
 import com.example.studyonline_server.model.CourseArrangementInfo;
 import com.example.studyonline_server.model.CourseInfo;
 import com.example.studyonline_server.model.EvaluateCourseStarInfo;
@@ -25,4 +26,6 @@ public interface CourseService {
     boolean evaluateCourse(EvaluateCourseStarInfo courseStarInfo);
 
     ArrayList<CourseListDTO> getCourses(String string);
+
+    CourseScoreDTO getScoreInfo(String string);
 }

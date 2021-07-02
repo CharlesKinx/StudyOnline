@@ -1,10 +1,8 @@
 package com.example.studyonline_server.mapper;
 
 
-import com.example.studyonline_server.model.CourseArrangementInfo;
-import com.example.studyonline_server.model.CourseInfo;
-import com.example.studyonline_server.model.EvaluateCourseStarInfo;
-import com.example.studyonline_server.model.TeacherInfo;
+import com.example.studyonline_server.dto.CourseScoreDTO;
+import com.example.studyonline_server.model.*;
 import org.apache.ibatis.annotations.*;
 
 import java.util.ArrayList;
@@ -52,4 +50,25 @@ public interface CourseMapper {
             @Result(property="courseUrl",column="course_url")
     })
     ArrayList<CourseInfo> findMyCourse(int id);
+
+
+    @Select("select name,score from choose_course,course where courseId=id and studentId = #{id}")
+    @Results({
+            @Result(property="courseName",column="name")
+    })
+    ArrayList<ScoreInfo> findCourseScore(int id);
+
+    @Select("select name,avg(score) as avg_score from course,choose_course where id = courseId group by courseId ")
+    @Results({
+            @Result(property="courseName",column="name"),
+            @Result(property="score",column="avg_score")
+    })
+    ArrayList<ScoreInfo> findAvgCourseScore();
+
+    @Select("select name,max(score) as avg_score from course,choose_course where id = courseId group by courseId ")
+    @Results({
+            @Result(property="courseName",column="name"),
+            @Result(property="score",column="avg_score")
+    })
+    ArrayList<ScoreInfo> findMaxCourseScore();
 }

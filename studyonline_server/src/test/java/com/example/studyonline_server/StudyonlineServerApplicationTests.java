@@ -1,11 +1,13 @@
 package com.example.studyonline_server;
 
 import com.example.studyonline_server.dto.CommentDTO;
+import com.example.studyonline_server.dto.CourseScoreDTO;
 import com.example.studyonline_server.mapper.CommentMapper;
 import com.example.studyonline_server.mapper.CourseMapper;
 import com.example.studyonline_server.model.CourseArrangementInfo;
 import com.example.studyonline_server.model.CourseInfo;
 import com.example.studyonline_server.model.EvaluateCourseStarInfo;
+import com.example.studyonline_server.model.ScoreInfo;
 import com.example.studyonline_server.service.impl.CourseServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,4 +64,14 @@ class StudyonlineServerApplicationTests {
         EvaluateCourseStarInfo evaluateCourseStarInfo = courseMapper.findEvaluation(1,13);
         System.out.println(evaluateCourseStarInfo);
     }
+
+    @Test
+    void findScore(){
+        ArrayList<ScoreInfo> scoreInfos = courseMapper.findMaxCourseScore();
+        for(ScoreInfo scoreInfo : scoreInfos){
+            System.out.println(scoreInfo);
+        }
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package com.example.studyonline_server.service.impl;
 
 import com.example.studyonline_server.dto.CourseListDTO;
+import com.example.studyonline_server.dto.CourseScoreDTO;
 import com.example.studyonline_server.mapper.CourseMapper;
 import com.example.studyonline_server.mapper.StudentMapper;
 import com.example.studyonline_server.model.*;
@@ -103,6 +104,24 @@ public class CourseServiceImpl implements CourseService {
 
 
         return courseListDTOArrayList;
+    }
+
+    @Override
+    public CourseScoreDTO getScoreInfo(String string) {
+        JSONObject jsonObject = JSONObject.fromObject(string);
+        int id = jsonObject.getInt("id");
+
+        CourseScoreDTO courseScoreDTO = new CourseScoreDTO();
+        courseScoreDTO.setMyScore(getMyScoreInfo(id));
+        courseScoreDTO.setAverageScore(courseMapper.findAvgCourseScore());
+        courseScoreDTO.setMaxScore(courseMapper.findMaxCourseScore());
+
+        return courseScoreDTO;
+    }
+
+
+    private ArrayList<ScoreInfo> getMyScoreInfo(int id){
+        return courseMapper.findCourseScore(id);
     }
 
 
