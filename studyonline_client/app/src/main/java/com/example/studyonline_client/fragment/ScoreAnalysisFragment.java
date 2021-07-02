@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.activity.LoginActivity;
 import com.example.studyonline_client.model.CourseScoreAnalysisInfo;
+import com.example.studyonline_client.model.ScoreInfo;
 import com.example.studyonline_client.utils.BarChartUtil;
 import com.example.studyonline_client.utils.OkHttpUtil;
 import com.example.studyonline_client.utils.StringAxisValueFormatterUtil;
@@ -43,35 +44,27 @@ public class ScoreAnalysisFragment extends Fragment {
 
     private BarChart barChart;
     private RadarChart radarChart;
-    List<BarEntry> list;
-    List<BarEntry>list2;
     private CourseScoreAnalysisInfo courseScoreAnalysisInfo;
+    private ArrayList<String> labels;
+    private BarChartUtil barChartUtil;
     List<RadarEntry> radarEntryList;
     List<RadarEntry> radarEntryList1;
-    private String labels[] = {"","高数","英语","语文","物理","化学","Java","Python"};
 
-    private void showRadarChart(View view){
-        radarChart = view.findViewById(R.id.radar_chart);
+
+    private void showRadarChart(ArrayList<ScoreInfo> myScore,ArrayList<ScoreInfo> maxScore){
 
         radarEntryList=new ArrayList<>();
         radarEntryList1=new ArrayList<>();
+        labels = new ArrayList<>();
+        for(int i =0;i<maxScore.size();i++){
+            radarEntryList.add(new RadarEntry(maxScore.get(i).getScore()));
+            radarEntryList1.add(new RadarEntry(myScore.get(i).getScore()));
+        }
 
-        radarEntryList.add(new RadarEntry(70));
-        radarEntryList.add(new RadarEntry(35));
-        radarEntryList.add(new RadarEntry(40));
-        radarEntryList.add(new RadarEntry(85));
-        radarEntryList.add(new RadarEntry(20));
-        radarEntryList.add(new RadarEntry(35));
-        radarEntryList.add(new RadarEntry(90));
 
-        radarEntryList1.add(new RadarEntry(30));
-        radarEntryList1.add(new RadarEntry(35));
-        radarEntryList1.add(new RadarEntry(80));
-        radarEntryList1.add(new RadarEntry(35));
-        radarEntryList1.add(new RadarEntry(70));
-        radarEntryList1.add(new RadarEntry(65));
-        radarEntryList1.add(new RadarEntry(20));
-
+        for(ScoreInfo scoreInfo:maxScore){
+            labels.add(scoreInfo.getCourseName());
+        }
 
         RadarDataSet radarDataSet=new RadarDataSet(radarEntryList,"各科最高分");
         radarDataSet.setColor(Color.parseColor("#F41F83"));
@@ -102,6 +95,7 @@ public class ScoreAnalysisFragment extends Fragment {
 
     private void initView(View view){
         barChart = view.findViewById(R.id.bar_chart);
+        radarChart = view.findViewById(R.id.radar_chart);
     }
 
 
@@ -113,8 +107,7 @@ public class ScoreAnalysisFragment extends Fragment {
         initView(view);
         courseScoreAnalysisInfo = new CourseScoreAnalysisInfo();
         getScoreData();
-        BarChartUtil barChartUtil = new BarChartUtil(barChart);
-        showRadarChart(view);
+        barChartUtil = new BarChartUtil(barChart);
         return view;
     }
 
@@ -130,7 +123,13 @@ public class ScoreAnalysisFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
                 courseScoreAnalysisInfo = JSONObject.parseObject(result,CourseScoreAnalysisInfo.class);
-
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        barChartUtil.showBarChart(courseScoreAnalysisInfo.getMyScore(),courseScoreAnalysisInfo.getAverageScore());
+                        showRadarChart(courseScoreAnalysisInfo.getMyScore(),courseScoreAnalysisInfo.getMaxScore());
+                    }
+                });
             }
         });
     }
