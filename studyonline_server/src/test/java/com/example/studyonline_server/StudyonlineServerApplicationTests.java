@@ -1,6 +1,8 @@
 package com.example.studyonline_server;
 
+import com.example.studyonline_server.dto.CommentDTO;
 import com.example.studyonline_server.dto.CourseListDTO;
+import com.example.studyonline_server.mapper.CommentMapper;
 import com.example.studyonline_server.mapper.CourseListMapper;
 import com.example.studyonline_server.model.CourseArrangementInfo;
 import com.example.studyonline_server.service.impl.CourseServiceImpl;
@@ -23,9 +25,11 @@ class StudyonlineServerApplicationTests {
     @Autowired
     private CourseServiceImpl courseService;
 
-
     @Autowired
     private CourseListMapper courseListMapper;
+
+    @Autowired
+    private CommentMapper commentMapper;
     @Test
     void findAll(){
         ArrayList<CourseArrangementInfo> courseListDTOArrayList = courseListMapper.findCourseArrangement(1);
@@ -44,5 +48,16 @@ class StudyonlineServerApplicationTests {
     void image() throws IOException {
 
         System.out.println(courseService.getCourseImg(2));
+    }
+
+
+    @Test
+    void findComment(){
+        ArrayList<CommentDTO> arrayList = commentMapper.findComment(1);
+        for(CommentDTO commentDTO:arrayList){
+            System.out.println(commentDTO);
+        }
+
+
     }
 }

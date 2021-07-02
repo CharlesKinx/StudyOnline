@@ -1,5 +1,6 @@
 package com.example.studyonline_server.mapper;
 
+import com.example.studyonline_server.dto.CommentDTO;
 import com.example.studyonline_server.model.CommentInfo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -19,4 +20,7 @@ public interface CommentMapper {
     void publishComment(CommentInfo commentInfo);
 
 
+
+    @Select("select comment.courseId,student.name,comment.time,comment.content,course_score.score from course,student,course_score,comment where course.id = #{ID} and course.id = comment.courseId and student.id = comment.studentId and course.id = course_score.courseId and student.id = course_score.studentId")
+    ArrayList<CommentDTO> findComment(int ID);
 }
