@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.studyonline_client.R;
+import com.example.studyonline_client.activity.ClassCoursePageActivity;
 import com.example.studyonline_client.activity.CourseInfoActivity;
 import com.example.studyonline_client.adapter.ClassListAdapter;
 import com.example.studyonline_client.model.ClassInformation;
@@ -21,7 +22,7 @@ import com.example.studyonline_client.utils.ToastUtil;
 
 import java.util.ArrayList;
 
-public class ClassContactFragment extends ListFragment {
+public class  ClassContactFragment extends ListFragment {
 
     private ListView listView;
     private ArrayList<ClassInformation> classInformationArrayList;
@@ -52,8 +53,7 @@ public class ClassContactFragment extends ListFragment {
     public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         //ClassInformation classInfo = classInformationArrayList.get(position);
-        //Intent intent = new Intent(getActivity(), CourseInfoActivity.class);
-        //startActivity(intent);
-        ToastUtil.show("点击了班课房间",getActivity());
+        Intent intent = new Intent(getActivity(), ClassCoursePageActivity.class);
+        startActivity(intent);
     }
 }
