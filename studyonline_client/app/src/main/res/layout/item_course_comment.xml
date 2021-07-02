@@ -8,16 +8,18 @@
     <LinearLayout
         android:orientation="horizontal"
         android:elevation="5dp"
-        android:layout_margin="6dp"
+        android:layout_margin="8dp"
         android:background="@drawable/login_et_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="80dp"
-        android:layout_height="80dp">
+        android:layout_gravity="center"
+        android:layout_width="60dp"
+        android:layout_height="60dp">
 
         <ImageView
+
             android:src="@drawable/logo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -41,7 +43,7 @@
                 android:id="@+id/comment_user_name"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/black"
+
                 android:text="小小心脏在成长"
                 android:textSize="18sp"
                 android:layout_width="wrap_content"

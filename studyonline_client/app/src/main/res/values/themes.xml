@@ -5,7 +5,7 @@
         <item name="android:windowNoTitle">true</item>
 
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">#00BCD4</item>
+        <item name="colorPrimaryVariant">#94D2F3</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
