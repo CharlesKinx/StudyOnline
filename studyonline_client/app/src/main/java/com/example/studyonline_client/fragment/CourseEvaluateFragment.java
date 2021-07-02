@@ -11,18 +11,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.ListFragment;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.activity.LoginActivity;
+import com.example.studyonline_client.adapter.CommentAdapter;
 import com.example.studyonline_client.model.CommentInfo;
+import com.example.studyonline_client.model.CommentItemInfo;
+import com.example.studyonline_client.model.CourseInfo;
 import com.example.studyonline_client.utils.BarChartUtil;
 import com.example.studyonline_client.utils.JsonUtil;
+import com.example.studyonline_client.utils.MyListView;
 import com.example.studyonline_client.utils.OkHttpUtil;
 import com.example.studyonline_client.utils.ToastUtil;
 import com.github.mikephil.charting.charts.BarChart;
@@ -49,23 +56,26 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class CourseEvaluateFragment extends Fragment implements View.OnClickListener {
+public class CourseEvaluateFragment extends ListFragment implements View.OnClickListener {
 
     private HorizontalBarChart horizontalBarChart;
     private List<BarEntry> list;
     private RatingBar ratingBar;
+    private ArrayList<CommentItemInfo> commentItemInfoArrayList;
     private Button publishComment;
     private EditText editTextComment;
     private CommentInfo commentInfo;
     private int courseId;
     private String url = "http://10.0.116.13:8181/comment";
+    private ListView listView;
+    private CommentAdapter commentAdapter;
 
     private void initView(View view){
-        horizontalBarChart = view.findViewById(R.id.hor_chart);
-        ratingBar = view.findViewById(R.id.ll_rb_star);
-        publishComment = view.findViewById(R.id.btn_course_comment);
-        editTextComment = view.findViewById(R.id.et_course_comment);
+
+
+        listView = view.findViewById(android.R.id.list);
         commentInfo = new CommentInfo();
+        commentItemInfoArrayList = new ArrayList<>();
     }
 
 
@@ -133,21 +143,14 @@ public class CourseEvaluateFragment extends Fragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_course_evaluate,container,false);
 //
-
         initView(view);
-        showBarChart();
+
+
         Intent intent = getActivity().getIntent();
         courseId = intent.getIntExtra("id",0);
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+        getCommentList(courseId);
 
-                ToastUtil.show("你给本课程评了"+rating+"星，谢谢您的评分",getContext());
-                ratingBar.setIsIndicator(true);
 
-                //linearLayoutView.setVisibility(View.GONE);
-            }
-        });
         return view;
     }
 
@@ -179,6 +182,52 @@ public class CourseEvaluateFragment extends Fragment implements View.OnClickList
 
             }
         });
+    }
+
+    private View getPersonalView(){
+        View headView = getLayoutInflater().inflate(R.layout.fragment_evaluate_head, null);
+        horizontalBarChart = headView.findViewById(R.id.hor_chart);
+        publishComment = headView.findViewById(R.id.btn_course_comment);
+        editTextComment = headView.findViewById(R.id.et_course_comment);
+        ratingBar = headView.findViewById(R.id.ll_rb_star);
+        showBarChart();
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+                ToastUtil.show("你给本课程评了"+rating+"星，谢谢您的评分",getContext());
+                ratingBar.setIsIndicator(true);
+
+                //linearLayoutView.setVisibility(View.GONE);
+            }
+        });
+        return headView;
+    }
+
+    private void getCommentList(int id){
+        OkHttpUtil.usePostById(url+"/list",id).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println(e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result = response.body().string();
+                commentItemInfoArrayList = (ArrayList<CommentItemInfo>) JSONObject.parseArray(result,CommentItemInfo.class);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        commentAdapter = new CommentAdapter(getActivity(),commentItemInfoArrayList);
+                        listView.setAdapter(commentAdapter);
+                        listView.addHeaderView(getPersonalView());
+                    }
+                });
+            }
+        });
+
+
     }
 
 

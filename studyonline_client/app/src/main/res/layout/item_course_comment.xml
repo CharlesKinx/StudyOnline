@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:elevation="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:background="@drawable/login_et_style"
-    android:layout_height="match_parent">
+
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:elevation="5dp"
+        android:layout_margin="6dp"
+        android:background="@drawable/login_et_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="80dp"
@@ -32,6 +38,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/comment_user_name"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"
@@ -49,10 +56,11 @@
                 android:orientation="vertical">
 
                 <per.wsj.library.AndRatingBar
-                    android:id="@+id/ll_rb_star"
+                    android:id="@+id/comment_star"
                     android:layout_gravity="right"
                     android:layout_width="wrap_content"
                     android:layout_height="15dp"
+                    android:isIndicator="true"
                     app:starSpacing="1dp"
                     app:scaleFactor="1.2"
                     app:starColor="#757575"
@@ -66,15 +74,16 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/comment_time"
             android:layout_marginRight="10dp"
             android:gravity="right"
             android:textSize="15sp"
-
             android:text="2021/6/24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:id="@+id/comment_content"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:text="啦啦啦啦啦啦啦啦绿绿"
@@ -84,6 +93,6 @@
 
     </LinearLayout>
 
-
+    </LinearLayout>
 
 </LinearLayout>
