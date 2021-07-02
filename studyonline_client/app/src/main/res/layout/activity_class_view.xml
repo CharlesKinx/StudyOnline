@@ -7,7 +7,7 @@
 
     <LinearLayout
 
-        android:background="#94D2F3"
+        android:background="#F488A7"
         android:elevation="8dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -22,8 +22,7 @@
 
 
         <TextView
-
-            android:id="@+id/change_back"
+            android:id="@+id/class_back"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center"
             android:textSize="20sp"
@@ -33,7 +32,7 @@
 
         <TextView
             android:id="@+id/class_course_name"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="47dp"
             android:layout_gravity="center"
             android:textSize="20sp"
             android:text="班课页面"
@@ -60,6 +59,7 @@
             android:layout_height="wrap_content">
 
             <ImageButton
+                android:id="@+id/class_work"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/work"
                 android:layout_width="45dp"
@@ -82,6 +82,7 @@
             android:layout_height="wrap_content">
 
             <ImageButton
+                android:id="@+id/class_file"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/file"
                 android:layout_width="45dp"
@@ -104,6 +105,7 @@
             android:layout_height="wrap_content">
 
             <ImageButton
+                android:id="@+id/class_communicate"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/communication"
                 android:layout_width="45dp"
@@ -126,6 +128,7 @@
             android:layout_height="wrap_content">
 
             <ImageButton
+                android:id="@+id/class_notification"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/information"
                 android:layout_width="45dp"

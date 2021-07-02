@@ -43,6 +43,10 @@
         <activity android:name=".teacher.TeacherActivity"></activity>
         <activity android:name=".activity.CourseLiveActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.ClassCoursePageActivity"></activity>
+        <activity android:name=".activity.CloudWorkActivity"></activity>
+        <activity android:name=".activity.CommunicationActivity"></activity>
+        <activity android:name=".activity.FileSourceActivity"></activity>
+        <activity android:name=".activity.NotificationActivity"></activity>
     </application>
 
 </manifest>

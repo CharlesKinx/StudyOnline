@@ -1,4 +1,15 @@
 package com.example.studyonline_client.activity;
 
-public class CloudWorkActivity {
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.studyonline_client.R;
+
+public class CloudWorkActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cloud_work);
+    }
 }

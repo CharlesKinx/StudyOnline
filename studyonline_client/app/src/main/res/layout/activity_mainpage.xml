@@ -12,7 +12,7 @@
 
     <LinearLayout
         android:elevation="8dp"
-        android:background="#94D2F3"
+        android:background="#F488A7"
         android:layout_width="match_parent"
         android:layout_height="50dp"
 
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
-        android:background="#94D2F3"
+        android:background="#EC7094"
         app:itemIconTint="@color/navigation"
         app:itemTextColor="@color/code"
         app:menu="@menu/menu"
