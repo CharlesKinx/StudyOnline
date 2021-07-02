@@ -28,6 +28,12 @@ public class CourseController {
     }
 
 
+    @PostMapping("/courses")
+    public ArrayList<CourseListDTO> getMyCourseList(@RequestBody String string){
+
+        return courseService.getCourses(string);
+    }
+
     @PostMapping("/arrangement")
     public ArrayList<CourseArrangementInfo> getArrangement(@RequestBody String string){
         JSONObject jsonObject = JSONObject.fromObject(string);
@@ -57,6 +63,11 @@ public class CourseController {
     @PostMapping("/star")
     public EvaluateCourseStarInfo isEvaluateCourse(@RequestBody String string){
        return courseService.findEvaluation(string);
+    }
+
+    @PostMapping("/evaluate")
+    public boolean evaluateCourse(@RequestBody EvaluateCourseStarInfo courseStarInfo){
+        return courseService.evaluateCourse(courseStarInfo);
     }
 
 }

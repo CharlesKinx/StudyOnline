@@ -2,10 +2,8 @@ package com.example.studyonline_server.service.impl;
 
 import com.example.studyonline_server.dto.CourseListDTO;
 import com.example.studyonline_server.mapper.CourseMapper;
-import com.example.studyonline_server.model.CourseArrangementInfo;
-import com.example.studyonline_server.model.CourseInfo;
-import com.example.studyonline_server.model.EvaluateCourseStarInfo;
-import com.example.studyonline_server.model.TeacherInfo;
+import com.example.studyonline_server.mapper.StudentMapper;
+import com.example.studyonline_server.model.*;
 import com.example.studyonline_server.service.CourseService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,9 @@ public class CourseServiceImpl implements CourseService {
 
     @Autowired
     private CourseMapper courseMapper;
+
+    @Autowired
+    private StudentMapper studentMapper;
 
     @Override
     public ArrayList<CourseListDTO> getCourseList() {
@@ -37,6 +38,8 @@ public class CourseServiceImpl implements CourseService {
         }
         return courseListDTOArrayList;
     }
+
+
 
     @Override
     public CourseInfo getCourseInfo(int id) {
@@ -66,10 +69,51 @@ public class CourseServiceImpl implements CourseService {
         return evaluateCourseStarInfo;
     }
 
+    @Override
+    public boolean evaluateCourse(EvaluateCourseStarInfo courseStarInfo) {
+        courseMapper.evaluateCourse(courseStarInfo);
+
+        return true;
+    }
+
+    @Override
+    public ArrayList<CourseListDTO> getCourses(String string) {
+
+        JSONObject jsonObject = JSONObject.fromObject(string);
+        int id = jsonObject.getInt("id");
+        ArrayList<CourseListDTO> courseListDTOArrayList = new ArrayList<>();
+        ArrayList<CourseInfo> courseInfos = courseMapper.findMyCourse(id);
+
+        ArrayList<TeacherInfo> teacherInfos = courseMapper.findAllTeacher();
+        for(CourseInfo courseInfo:courseInfos ){
+            CourseListDTO courseListDTO = new CourseListDTO();
+            courseListDTO.setName(courseInfo.getName());
+            courseListDTO.setId(courseInfo.getId());
+            courseListDTO.setImgUrl(courseInfo.getCourseUrl());
+            courseListDTO.setTime(courseInfo.getTime());
+
+            for(TeacherInfo teacherInfo :teacherInfos){
+                if(courseInfo.getTeacherId() == teacherInfo.getId()){
+                    courseListDTO.setTeacherName(teacherInfo.getName());
+                }
+            }
+
+            courseListDTOArrayList.add(courseListDTO);
+        }
+
+
+        return courseListDTOArrayList;
+    }
+
 
     private ArrayList<CourseInfo> getCourseListInfo(){
         ArrayList<CourseInfo> courseInfos = courseMapper.findAllCourse();
         return courseInfos;
+    }
+
+    private ArrayList<StudentInfo> getStudentListInfo(){
+        ArrayList<StudentInfo> studentInfos = studentMapper.findAllStudent();
+        return studentInfos;
     }
 
 

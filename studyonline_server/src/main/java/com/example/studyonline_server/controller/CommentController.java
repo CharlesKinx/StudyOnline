@@ -27,7 +27,6 @@ public class CommentController {
         return commentService.publishComment(commentInfo);
     }
 
-
     @PostMapping("/list")
     public ArrayList<CommentDTO> getCommentList(@RequestBody String string){
         return commentService.getCommentList(string);

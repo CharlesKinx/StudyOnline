@@ -21,4 +21,8 @@ public interface CourseService {
     ArrayList<CourseArrangementInfo> getCourseArrangement(int id);
 
     EvaluateCourseStarInfo findEvaluation(String string);
+
+    boolean evaluateCourse(EvaluateCourseStarInfo courseStarInfo);
+
+    ArrayList<CourseListDTO> getCourses(String string);
 }

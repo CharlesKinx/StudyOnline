@@ -42,4 +42,14 @@ public interface CourseMapper {
     @Select("select * from course_score where courseId = #{courseId} and studentId = #{studentId}")
     EvaluateCourseStarInfo findEvaluation(int courseId,int studentId);
 
+    @Insert("insert into course_score (studentId,courseId,status,score) values (#{studentId},#{courseId},#{status},#{score})")
+    void evaluateCourse(EvaluateCourseStarInfo evaluateCourseStarInfo);
+
+
+    @Select("select * from choose_course,course where choose_course.courseId = course.id and choose_course.studentId = #{id}")
+    @Results({
+            @Result(property="viewNumber",column="view_number"),
+            @Result(property="courseUrl",column="course_url")
+    })
+    ArrayList<CourseInfo> findMyCourse(int id);
 }

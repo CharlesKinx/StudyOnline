@@ -2,7 +2,10 @@ package com.example.studyonline_server.mapper;
 
 
 import com.example.studyonline_server.model.StudentInfo;
+import com.example.studyonline_server.model.TeacherInfo;
 import org.apache.ibatis.annotations.*;
+
+import java.util.ArrayList;
 
 @Mapper
 public interface StudentMapper {
@@ -25,5 +28,8 @@ public interface StudentMapper {
 
     @Select("select name from student where id = #{id}")
     String findNameById(int id);
+
+    @Select("select * from student")
+    ArrayList<StudentInfo> findAllStudent();
 
 }

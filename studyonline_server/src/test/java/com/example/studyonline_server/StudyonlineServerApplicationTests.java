@@ -4,6 +4,7 @@ import com.example.studyonline_server.dto.CommentDTO;
 import com.example.studyonline_server.mapper.CommentMapper;
 import com.example.studyonline_server.mapper.CourseMapper;
 import com.example.studyonline_server.model.CourseArrangementInfo;
+import com.example.studyonline_server.model.CourseInfo;
 import com.example.studyonline_server.model.EvaluateCourseStarInfo;
 import com.example.studyonline_server.service.impl.CourseServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -48,6 +49,13 @@ class StudyonlineServerApplicationTests {
         System.out.println(courseService.getCourseImg(2));
     }
 
+    @Test
+    void findMyCourse(){
+        ArrayList<CourseInfo> courseInfos =courseMapper.findMyCourse(14);
+        for(CourseInfo courseInfo:courseInfos){
+            System.out.println(courseInfo);
+        }
+    }
 
     @Test
     void findEvaluation(){
