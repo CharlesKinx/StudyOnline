@@ -1,17 +1,15 @@
 package com.example.studyonline_server;
 
 import com.example.studyonline_server.dto.CommentDTO;
-import com.example.studyonline_server.dto.CourseListDTO;
 import com.example.studyonline_server.mapper.CommentMapper;
-import com.example.studyonline_server.mapper.CourseListMapper;
+import com.example.studyonline_server.mapper.CourseMapper;
 import com.example.studyonline_server.model.CourseArrangementInfo;
+import com.example.studyonline_server.model.EvaluateCourseStarInfo;
 import com.example.studyonline_server.service.impl.CourseServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -26,13 +24,13 @@ class StudyonlineServerApplicationTests {
     private CourseServiceImpl courseService;
 
     @Autowired
-    private CourseListMapper courseListMapper;
+    private CourseMapper courseMapper;
 
     @Autowired
     private CommentMapper commentMapper;
     @Test
     void findAll(){
-        ArrayList<CourseArrangementInfo> courseListDTOArrayList = courseListMapper.findCourseArrangement(1);
+        ArrayList<CourseArrangementInfo> courseListDTOArrayList = courseMapper.findCourseArrangement(1);
         for (CourseArrangementInfo courseListDTO :courseListDTOArrayList){
             System.out.println(courseListDTO);
         }
@@ -41,7 +39,7 @@ class StudyonlineServerApplicationTests {
 
     @Test
     void findCourse(){
-        System.out.println(courseListMapper.findById(2));
+        System.out.println(courseMapper.findById(2));
     }
 
     @Test
@@ -52,12 +50,8 @@ class StudyonlineServerApplicationTests {
 
 
     @Test
-    void findComment(){
-        ArrayList<CommentDTO> arrayList = commentMapper.findComment(1);
-        for(CommentDTO commentDTO:arrayList){
-            System.out.println(commentDTO);
-        }
-
-
+    void findEvaluation(){
+        EvaluateCourseStarInfo evaluateCourseStarInfo = courseMapper.findEvaluation(1,13);
+        System.out.println(evaluateCourseStarInfo);
     }
 }

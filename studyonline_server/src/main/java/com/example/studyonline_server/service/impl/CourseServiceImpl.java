@@ -1,25 +1,23 @@
 package com.example.studyonline_server.service.impl;
 
 import com.example.studyonline_server.dto.CourseListDTO;
-import com.example.studyonline_server.mapper.CourseListMapper;
+import com.example.studyonline_server.mapper.CourseMapper;
 import com.example.studyonline_server.model.CourseArrangementInfo;
 import com.example.studyonline_server.model.CourseInfo;
-import com.example.studyonline_server.model.ResultInfo;
+import com.example.studyonline_server.model.EvaluateCourseStarInfo;
 import com.example.studyonline_server.model.TeacherInfo;
 import com.example.studyonline_server.service.CourseService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 @Service
 public class CourseServiceImpl implements CourseService {
 
     @Autowired
-    private CourseListMapper courseListMapper;
+    private CourseMapper courseMapper;
 
     @Override
     public ArrayList<CourseListDTO> getCourseList() {
@@ -42,31 +40,41 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public CourseInfo getCourseInfo(int id) {
-        CourseInfo courseInfo = courseListMapper.findById(id);
+        CourseInfo courseInfo = courseMapper.findById(id);
         return courseInfo;
     }
 
     @Override
     public String getCourseImg(int id) {
 
-        return courseListMapper.findImgUrl(id);
+        return courseMapper.findImgUrl(id);
 
     }
 
     @Override
     public ArrayList<CourseArrangementInfo> getCourseArrangement(int id) {
-        return courseListMapper.findCourseArrangement(id);
+        return courseMapper.findCourseArrangement(id);
+    }
+
+    @Override
+    public EvaluateCourseStarInfo findEvaluation(String string) {
+        EvaluateCourseStarInfo evaluateCourseStarInfo = new EvaluateCourseStarInfo();
+        JSONObject jsonObject = JSONObject.fromObject(string);
+        int courseId = jsonObject.getInt("courseId");
+        int studentId = jsonObject.getInt("studentId");
+        evaluateCourseStarInfo =courseMapper.findEvaluation(courseId,studentId);
+        return evaluateCourseStarInfo;
     }
 
 
     private ArrayList<CourseInfo> getCourseListInfo(){
-        ArrayList<CourseInfo> courseInfos = courseListMapper.findAllCourse();
+        ArrayList<CourseInfo> courseInfos = courseMapper.findAllCourse();
         return courseInfos;
     }
 
 
     private ArrayList<TeacherInfo> getTeacherListInfo(){
-        ArrayList<TeacherInfo> teacherInfos = courseListMapper.findAllTeacher();
+        ArrayList<TeacherInfo> teacherInfos = courseMapper.findAllTeacher();
         return teacherInfos;
     }
 

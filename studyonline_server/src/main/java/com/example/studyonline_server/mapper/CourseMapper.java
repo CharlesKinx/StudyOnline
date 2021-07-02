@@ -3,13 +3,14 @@ package com.example.studyonline_server.mapper;
 
 import com.example.studyonline_server.model.CourseArrangementInfo;
 import com.example.studyonline_server.model.CourseInfo;
+import com.example.studyonline_server.model.EvaluateCourseStarInfo;
 import com.example.studyonline_server.model.TeacherInfo;
 import org.apache.ibatis.annotations.*;
 
 import java.util.ArrayList;
 
 @Mapper
-public interface CourseListMapper {
+public interface CourseMapper {
 
     @Select("select * from course")
     @Results({
@@ -36,5 +37,9 @@ public interface CourseListMapper {
 
     @Select("select * from course_arrangement where courseId = #{courseId}")
     ArrayList<CourseArrangementInfo> findCourseArrangement(int courseId);
+
+
+    @Select("select * from course_score where courseId = #{courseId} and studentId = #{studentId}")
+    EvaluateCourseStarInfo findEvaluation(int courseId,int studentId);
 
 }
