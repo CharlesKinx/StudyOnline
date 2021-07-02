@@ -23,7 +23,7 @@ public class CommentController {
     private CommentServiceImpl commentService;
 
     @PostMapping("/publish")
-    public ResultInfo publishComment(@RequestBody CommentInfo commentInfo){
+    public CommentDTO publishComment(@RequestBody CommentInfo commentInfo){
         return commentService.publishComment(commentInfo);
     }
 

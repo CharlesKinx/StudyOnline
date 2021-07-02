@@ -23,6 +23,7 @@ public interface StudentMapper {
     @Update("update student set name = #{name}, telephone=#{telephone},age=#{age},sex=#{sex},password =#{password} ,account =#{account} where id = #{id}")
     void updateStudentInfo(StudentInfo studentInfo);
 
-
+    @Select("select name from student where id = #{id}")
+    String findNameById(int id);
 
 }

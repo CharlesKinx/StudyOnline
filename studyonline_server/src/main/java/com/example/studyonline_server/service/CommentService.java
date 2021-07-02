@@ -8,6 +8,6 @@ import java.util.ArrayList;
 
 public interface CommentService {
 
-    ResultInfo publishComment(CommentInfo commentInfo);
+    CommentDTO publishComment(CommentInfo commentInfo);
     ArrayList<CommentDTO> getCommentList(String string);
 }
