@@ -157,6 +157,7 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
         courseId = intent.getIntExtra("id",0);
         getCommentList(courseId);
         listView.addHeaderView(getPersonalView());
+        publishComment.setOnClickListener(this);
         return view;
     }
 
@@ -180,12 +181,23 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
         OkHttpUtil.usePost(url+"/publish", JsonUtil.objectToJson(commentInfo)).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                System.out.println();
+                System.out.println(e);
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
+                String result = response.body().string();
+                System.out.println(result);
+                CommentItemInfo commentItemInfo = JSONObject.parseObject(result,CommentItemInfo.class);
+                commentItemInfoArrayList.add(commentItemInfo);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        editTextComment.setText("");
+                        ToastUtil.show("发布成功",getActivity());
+                        commentAdapter.notifyDataSetChanged();
+                    }
+                });
             }
         });
     }
@@ -219,7 +231,6 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
                     public void run() {
                         commentAdapter = new CommentAdapter(getActivity(),commentItemInfoArrayList);
                         listView.setAdapter(commentAdapter);
-
                     }
                 });
             }
