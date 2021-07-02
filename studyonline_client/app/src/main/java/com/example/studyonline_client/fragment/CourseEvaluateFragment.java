@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.ListFragment;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.activity.LoginActivity;
@@ -27,6 +28,8 @@ import com.example.studyonline_client.adapter.CommentAdapter;
 import com.example.studyonline_client.model.CommentInfo;
 import com.example.studyonline_client.model.CommentItemInfo;
 import com.example.studyonline_client.model.CourseInfo;
+import com.example.studyonline_client.model.EvaluateCourseStarInfo;
+import com.example.studyonline_client.model.StudentInfo;
 import com.example.studyonline_client.utils.BarChartUtil;
 import com.example.studyonline_client.utils.JsonUtil;
 import com.example.studyonline_client.utils.MyListView;
@@ -49,7 +52,9 @@ import com.taufiqrahman.reviewratings.RatingReviews;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import okhttp3.Call;
@@ -58,17 +63,21 @@ import okhttp3.Response;
 
 public class CourseEvaluateFragment extends ListFragment implements View.OnClickListener {
 
+    private ArrayList<CommentItemInfo> commentItemInfoArrayList;
+    private CommentAdapter commentAdapter;
+    private CommentInfo commentInfo;
+    private String url = "http://10.0.116.13:8181/comment";
+    private EvaluateCourseStarInfo evaluateCourseStarInfo;
+
     private HorizontalBarChart horizontalBarChart;
     private List<BarEntry> list;
     private RatingBar ratingBar;
-    private ArrayList<CommentItemInfo> commentItemInfoArrayList;
+    private ListView listView;
     private Button publishComment;
     private EditText editTextComment;
-    private CommentInfo commentInfo;
+
     private int courseId;
-    private String url = "http://10.0.116.13:8181/comment";
-    private ListView listView;
-    private CommentAdapter commentAdapter;
+
 
     private void initView(View view){
 
@@ -76,11 +85,11 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
         listView = view.findViewById(android.R.id.list);
         commentInfo = new CommentInfo();
         commentItemInfoArrayList = new ArrayList<>();
+        evaluateCourseStarInfo = new EvaluateCourseStarInfo();
     }
 
 
-    private void showBarChart()
-    {
+    private void showBarChart() {
 
         String[] labels = {"",
                 "5★ ",
@@ -144,13 +153,10 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
         View view = inflater.inflate(R.layout.fragment_course_evaluate,container,false);
 //
         initView(view);
-
-
         Intent intent = getActivity().getIntent();
         courseId = intent.getIntExtra("id",0);
         getCommentList(courseId);
-
-
+        listView.addHeaderView(getPersonalView());
         return view;
     }
 
@@ -174,7 +180,7 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
         OkHttpUtil.usePost(url+"/publish", JsonUtil.objectToJson(commentInfo)).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                System.out.println();
             }
 
             @Override
@@ -191,17 +197,9 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
         editTextComment = headView.findViewById(R.id.et_course_comment);
         ratingBar = headView.findViewById(R.id.ll_rb_star);
         showBarChart();
+        postEvaluation();
 
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
-                ToastUtil.show("你给本课程评了"+rating+"星，谢谢您的评分",getContext());
-                ratingBar.setIsIndicator(true);
-
-                //linearLayoutView.setVisibility(View.GONE);
-            }
-        });
         return headView;
     }
 
@@ -221,14 +219,56 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
                     public void run() {
                         commentAdapter = new CommentAdapter(getActivity(),commentItemInfoArrayList);
                         listView.setAdapter(commentAdapter);
-                        listView.addHeaderView(getPersonalView());
+
                     }
                 });
             }
         });
-
-
     }
 
+    private void postEvaluation(){
+        Map<String,Integer> map = new HashMap<>();
+        map.put("courseId",courseId);
+        map.put("studentId",LoginActivity.studentInfo.getId());
+        String json = JSON.toJSONString(map);
+
+        OkHttpUtil.usePost(CourseLiveFragment.url+"/star",json).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result = response.body().string();
+                evaluateCourseStarInfo = JSONObject.parseObject(result, EvaluateCourseStarInfo.class);
+                System.out.println(evaluateCourseStarInfo);
+                if (evaluateCourseStarInfo.getStatus()==1){
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ratingBar.setRating(evaluateCourseStarInfo.getScore());
+                            ratingBar.setIsIndicator(true);
+                        }
+                    });
+                }else {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                                @Override
+                                public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                                    ToastUtil.show("您给本课程评了"+rating+"颗星，谢谢您的评分!",getContext());
+                                    ratingBar.setIsIndicator(true);
+
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        });
+
+    }
 
 }
