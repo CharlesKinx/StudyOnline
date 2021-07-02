@@ -53,11 +53,12 @@ public class CourseLiveActivity extends AppCompatActivity {
 
         mLivePusher.startCameraPreview(pushView);
         
-        String url ="rtmp://144585.livepush.myqcloud.com/live/demo?txSecret=839e872789fa82d6e97fe1554cd068a5&txTime=60D94364";
+        String url = "rtmp://144585.livepush.myqcloud.com/live/push?txSecret=701828c1dee1b96c895b9a7c868b710d&txTime=60E080F2";
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ToastUtil.show("推流成功！",getApplicationContext());
                 mLivePusher.startPusher(url.trim());
             }
         });

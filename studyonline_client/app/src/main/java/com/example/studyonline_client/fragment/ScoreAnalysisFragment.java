@@ -9,8 +9,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.studyonline_client.R;
+import com.example.studyonline_client.activity.LoginActivity;
+import com.example.studyonline_client.model.CourseScoreAnalysisInfo;
 import com.example.studyonline_client.utils.BarChartUtil;
+import com.example.studyonline_client.utils.OkHttpUtil;
 import com.example.studyonline_client.utils.StringAxisValueFormatterUtil;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.RadarChart;
@@ -26,15 +31,21 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
 public class ScoreAnalysisFragment extends Fragment {
+
     private BarChart barChart;
     private RadarChart radarChart;
     List<BarEntry> list;
     List<BarEntry>list2;
-
+    private CourseScoreAnalysisInfo courseScoreAnalysisInfo;
     List<RadarEntry> radarEntryList;
     List<RadarEntry> radarEntryList1;
     private String labels[] = {"","高数","英语","语文","物理","化学","Java","Python"};
@@ -100,8 +111,27 @@ public class ScoreAnalysisFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_score_analysis,container,false);
         initView(view);
+        courseScoreAnalysisInfo = new CourseScoreAnalysisInfo();
+        getScoreData();
         BarChartUtil barChartUtil = new BarChartUtil(barChart);
         showRadarChart(view);
         return view;
+    }
+
+
+    private void getScoreData(){
+        OkHttpUtil.usePostById(CourseLiveFragment.url+"/score", LoginActivity.studentInfo.getId()).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println(e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result = response.body().string();
+                courseScoreAnalysisInfo = JSONObject.parseObject(result,CourseScoreAnalysisInfo.class);
+
+            }
+        });
     }
 }
