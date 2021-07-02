@@ -81,11 +81,11 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
 
     private void initView(View view){
 
-
         listView = view.findViewById(android.R.id.list);
         commentInfo = new CommentInfo();
         commentItemInfoArrayList = new ArrayList<>();
         evaluateCourseStarInfo = new EvaluateCourseStarInfo();
+
     }
 
 
@@ -246,7 +246,6 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
         OkHttpUtil.usePost(CourseLiveFragment.url+"/star",json).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
             }
 
             @Override
@@ -254,7 +253,7 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
                 String result = response.body().string();
                 evaluateCourseStarInfo = JSONObject.parseObject(result, EvaluateCourseStarInfo.class);
                 System.out.println(evaluateCourseStarInfo);
-                if (evaluateCourseStarInfo.getStatus()==1){
+                if (evaluateCourseStarInfo!=null && evaluateCourseStarInfo.getStatus()==1){
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -269,9 +268,30 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
                             ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
                                 @Override
                                 public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                                    ToastUtil.show("您给本课程评了"+rating+"颗星，谢谢您的评分!",getContext());
-                                    ratingBar.setIsIndicator(true);
 
+                                    ratingBar.setIsIndicator(true);
+                                    EvaluateCourseStarInfo evaluateCourseStar = new EvaluateCourseStarInfo();
+                                    evaluateCourseStar.setScore(rating);
+                                    evaluateCourseStar.setCourseId(courseId);
+                                    evaluateCourseStar.setStatus(1);
+                                    evaluateCourseStar.setStudentId(LoginActivity.studentInfo.getId());
+
+                                    OkHttpUtil.usePost(CourseLiveFragment.url+"/evaluate",JsonUtil.objectToJson(evaluateCourseStar)).enqueue(new Callback() {
+                                        @Override
+                                        public void onFailure(Call call, IOException e) {
+                                            System.out.println(e);
+                                        }
+
+                                        @Override
+                                        public void onResponse(Call call, Response response) throws IOException {
+                                            getActivity().runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    ToastUtil.show("您给本课程评了"+rating+"颗星，谢谢您的评分!",getContext());
+                                                }
+                                            });
+                                        }
+                                    });
                                 }
                             });
                         }

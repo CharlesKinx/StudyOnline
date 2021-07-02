@@ -6,7 +6,7 @@ public class EvaluateCourseStarInfo {
     private int studentId;
     private int courseId;
     private float score;
-    private int status;
+    private int status =0;
 
     public int getStudentId() {
         return studentId;

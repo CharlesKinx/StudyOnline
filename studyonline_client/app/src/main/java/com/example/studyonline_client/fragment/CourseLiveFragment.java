@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import com.alibaba.fastjson.JSONObject;
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.activity.CourseInfoActivity;
+import com.example.studyonline_client.activity.LoginActivity;
 import com.example.studyonline_client.adapter.CourseListAdapter;
 import com.example.studyonline_client.model.CourseInfo;
 import com.example.studyonline_client.utils.OkHttpUtil;
@@ -48,7 +49,7 @@ public class CourseLiveFragment extends ListFragment {
         View view = inflater.inflate(R.layout.fragment_courselive,container,false);
         listView = view.findViewById(android.R.id.list);
         courseInfoArrayList = new ArrayList<>();
-        OkHttpUtil.useGet(url+"/list").enqueue(new Callback() {
+        OkHttpUtil.usePostById(url+"/courses", LoginActivity.studentInfo.getId()).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 System.out.println(e);
