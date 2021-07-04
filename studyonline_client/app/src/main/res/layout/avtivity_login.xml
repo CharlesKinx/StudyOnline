@@ -56,6 +56,7 @@
             android:layout_height="40dp"/>
 
         <EditText
+            android:letterSpacing="0.4"
             android:theme="@style/MyEditText"
             android:hint="请输入账号"
             android:id="@+id/et_login_user"
@@ -88,6 +89,7 @@
             android:layout_height="40dp"/>
 
         <EditText
+            android:letterSpacing="0.4"
             android:theme="@style/MyEditText"
             android:hint="请输入密码"
             android:id="@+id/et_login_password"
