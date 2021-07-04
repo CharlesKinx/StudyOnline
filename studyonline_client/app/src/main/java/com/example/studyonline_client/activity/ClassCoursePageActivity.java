@@ -59,7 +59,7 @@ public class ClassCoursePageActivity extends AppCompatActivity implements View.O
                 startActivity(intent);
                 break;
             case R.id.class_work:
-                intent = new Intent(ClassCoursePageActivity.this,CloudWorkActivity.class);
+                intent = new Intent(ClassCoursePageActivity.this,WriteWorkActivity.class);
                 startActivity(intent);
                 break;
             case R.id.class_back:

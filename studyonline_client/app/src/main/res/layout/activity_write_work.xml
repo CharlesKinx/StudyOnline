@@ -43,7 +43,7 @@
     </LinearLayout>
 
     <LinearLayout
-
+        android:elevation="5dp"
         android:layout_margin="10dp"
         android:background="@drawable/class_view"
         android:orientation="horizontal"
@@ -84,14 +84,19 @@
     </LinearLayout>
 
     <TextView
-        android:text="添加"
-        android:textSize="18sp"
+        android:elevation="2dp"
+        android:gravity="right"
+        android:background="@drawable/class_view"
+        android:id="@+id/find_file"
+        android:text="添加附件"
+        android:textSize="16sp"
         android:textColor="#E6657E"
         android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:id="@+id/file_work"
         android:layout_gravity="center"
         android:layout_marginRight="10dp"
@@ -103,13 +108,14 @@
         android:layout_height="80dp">
 
         <ImageView
+            android:id="@+id/word_uri"
             android:layout_gravity="center"
-            android:src="@drawable/pdf"
+
             android:layout_width="40dp"
             android:layout_height="40dp"/>
 
         <TextView
-            android:text="课后习题"
+            android:id="@+id/work_name"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:layout_marginLeft="5dp"
