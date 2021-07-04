@@ -19,4 +19,10 @@
         <item name="colorAccent">#57BBD5</item><!--选中颜色-->
         <item name="colorControlNormal">#AEAEAE</item><!--未选中颜色-->
     </style>
+
+    <style name="MyEditText">
+        <item name="colorControlNormal">#AEAEAE</item>
+        <item name="colorControlActivated">#F488A7</item>
+    </style>
+
 </resources>

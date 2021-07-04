@@ -155,6 +155,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     studentInfo = JSONObject.parseObject(userString,StudentInfo.class);
                     Intent intent = new Intent(LoginActivity.this,MainPageActivity.class);
                     startActivity(intent);
+                    finish();
                     runOnUiThread(()->{
                         ToastUtil.show(httpResultInfo.getMsg(),LoginActivity.this);
                     });

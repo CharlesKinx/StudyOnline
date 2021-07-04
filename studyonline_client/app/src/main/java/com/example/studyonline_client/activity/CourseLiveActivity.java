@@ -9,6 +9,8 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,13 +34,20 @@ public class CourseLiveActivity extends AppCompatActivity {
     private TXCloudVideoView pushView ;
     private  TXLivePusher mLivePusher;
     private TXLivePushConfig mLivePushConfig;
-    private Button button;
+    private ImageButton button;
+    private ImageButton buttonChange;
+    private TextView textView;
+    private ImageButton over;
 
     private void initView(){
         pushView = findViewById(R.id.pusher_tx_cloud_view);
         button = findViewById(R.id.begin_push);
+        buttonChange = findViewById(R.id.change_camera);
         mLivePusher = new TXLivePusher(this);
+        over = findViewById(R.id.over_push);
+        over.setVisibility(View.GONE);
         mLivePushConfig = new TXLivePushConfig();
+        textView = findViewById(R.id.begin_live);
     }
 
     @Override
@@ -53,22 +62,44 @@ public class CourseLiveActivity extends AppCompatActivity {
 
         mLivePusher.startCameraPreview(pushView);
         
-        String url = "rtmp://144585.livepush.myqcloud.com/live/push?txSecret=701828c1dee1b96c895b9a7c868b710d&txTime=60E080F2";
+        String url = "rtmp://144585.livepush.myqcloud.com/live/demo?txSecret=0161502674029b290636dd30b659f434&txTime=60E274F9";
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 ToastUtil.show("推流成功！",getApplicationContext());
                 mLivePusher.startPusher(url.trim());
+                textView.setVisibility(View.GONE);
+                button.setVisibility(View.GONE);
+                over.setVisibility(View.VISIBLE);
             }
         });
+
+
+        buttonChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mLivePusher.switchCamera();
+            }
+        });
+
+        over.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mLivePusher.stopPusher();
+                mLivePusher.stopCameraPreview(true);
+                ToastUtil.show("结束直播",CourseLiveActivity.this);
+                finish();
+            }
+        });
+
     }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mLivePusher.stopPusher();
-        mLivePusher.stopCameraPreview(true);
+
     }
 }

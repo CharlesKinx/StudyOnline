@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -9,12 +9,44 @@
     <com.tencent.rtmp.ui.TXCloudVideoView
         android:id="@+id/pusher_tx_cloud_view"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="match_parent"
       />
 
-    <Button
+    <ImageButton
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/beginlive"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         android:id="@+id/begin_push"
-        android:text="开始推流"
+        android:layout_width="50dp"
+        android:layout_height="40dp"/>
+
+    <ImageButton
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/over"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/over_push"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <ImageButton
+        android:id="@+id/change_camera"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/carmera"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
+
+
+    <TextView
+        android:id="@+id/begin_live"
+        android:layout_marginBottom="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="开始直播"
+        android:textColor="#EC317D"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-</LinearLayout>
+</RelativeLayout>
