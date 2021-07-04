@@ -26,6 +26,7 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
     private ImageView imageView;
     private TextView workName;
     private LinearLayout linearLayout;
+    private TextView fileSize;
 
 
     private void initView(){
@@ -33,6 +34,7 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
         imageView = findViewById(R.id.word_uri);
         workName =findViewById(R.id.work_name);
         linearLayout = findViewById(R.id.file_work);
+        fileSize = findViewById(R.id.work_file_size);
         linearLayout.setVisibility(View.GONE);
     }
 
@@ -74,8 +76,11 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
     private void getFileType(Uri uri){
 
         Cursor returnCursor = getContentResolver().query(uri, null, null, null, null);
+
         int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+        int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
         returnCursor.moveToFirst();
+
         String fileName = returnCursor.getString(nameIndex);
         String[] token = fileName.split("\\.");
         String s = token[1];
@@ -96,9 +101,30 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
             imageView.setImageURI(uri);
         }
         workName.setText(fileName);
+        fileSize.setText(longToByteSize(returnCursor.getLong(sizeIndex)));
         linearLayout.setVisibility(View.VISIBLE);
-
     }
 
+
+    private String longToByteSize(long size){
+        if(size == 0){
+            return null;
+        }
+        if (size < 1024) {
+            return String.valueOf(size) + "b";
+        } else {
+            size = size / 1024;
+        }
+        if (size < 1024) {
+            size = size * 100;
+            return String.valueOf((size / 100)) + "."
+                    + String.valueOf((size % 100)) + "Kb";
+        } else {
+            size = size * 100 / 1024;
+            return String.valueOf((size / 100)) + "."
+                    + String.valueOf((size % 100)) + "Mb";
+        }
+
+    }
 
 }
