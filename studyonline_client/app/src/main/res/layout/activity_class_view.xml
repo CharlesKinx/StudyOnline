@@ -91,7 +91,7 @@
                 android:layout_marginTop="5dp"
                 android:textSize="15sp"
                 android:textColor="#CC883F"
-                android:text="文件资源"
+                android:text="资源上传"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -113,7 +113,7 @@
             <TextView
                 android:layout_marginTop="5dp"
                 android:textSize="15sp"
-                android:textColor="#6F1FA6"
+                android:textColor="#C10F62"
                 android:text="交流中心"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -137,7 +137,7 @@
                 android:layout_marginTop="5dp"
                 android:textSize="15sp"
                 android:text="通知"
-                android:textColor="#0AAFBD"
+                android:textColor="#068B97"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -147,4 +147,5 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 </LinearLayout>

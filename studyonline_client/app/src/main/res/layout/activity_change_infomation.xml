@@ -9,7 +9,7 @@
 
 
     <LinearLayout
-        android:background="#94D2F3"
+        android:background="#F488A7"
         android:elevation="8dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -94,6 +94,7 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:theme="@style/MyEditText"
                 android:hint="请输入要修改的用户名"
                 android:id="@+id/et_change_user_name"
                 android:textSize="15sp"
@@ -123,6 +124,8 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:theme="@style/MyEditText"
+
                 android:hint="请输入要修改的手机号"
                 android:id="@+id/et_change_telephone"
                 android:textSize="15sp"
@@ -153,6 +156,8 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:theme="@style/MyEditText"
+
                 android:hint="请输入年龄"
                 android:id="@+id/et_change_age"
                 android:textSize="15sp"
@@ -184,6 +189,8 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:theme="@style/MyEditText"
+
                 android:hint="请输入要修改的密码"
                 android:id="@+id/et_change_password"
                 android:textSize="15sp"
@@ -216,6 +223,7 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:theme="@style/MyEditText"
                 android:hint="请再次输入密码"
                 android:id="@+id/et_change_password1"
                 android:textSize="15sp"

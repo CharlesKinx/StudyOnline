@@ -56,6 +56,7 @@
             android:layout_height="40dp"/>
 
         <EditText
+            android:theme="@style/MyEditText"
             android:hint="请输入账号"
             android:id="@+id/et_login_user"
             android:textSize="15sp"
@@ -87,6 +88,7 @@
             android:layout_height="40dp"/>
 
         <EditText
+            android:theme="@style/MyEditText"
             android:hint="请输入密码"
             android:id="@+id/et_login_password"
             android:textSize="15sp"
@@ -129,9 +131,9 @@
     <Button
         android:id="@+id/btn_login"
         android:layout_marginTop="10dp"
-        android:textSize="17sp"
+        android:textSize="18sp"
         android:text="登    录"
-        android:textColor="#838383"
+        android:textColor="#616161"
         android:background="@drawable/login_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

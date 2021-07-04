@@ -1,7 +1,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle" >
 
-    <solid android:color="#A8E0F1" />
+    <solid android:color="#F8A1BA" />
     <!-- 边框 -->
 
     <!-- 内填充颜色 -->
@@ -11,5 +11,5 @@
         android:right="10dp"
         android:top="10dp" />
     <!-- 圆角 -->
-    <corners android:radius="5dp" />
+    <corners android:radius="2dp" />
 </shape>

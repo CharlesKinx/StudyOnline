@@ -58,6 +58,8 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:theme="@style/MyEditText"
+
                 android:hint="请输入账号"
                 android:id="@+id/et_register_user"
                 android:textSize="15sp"
@@ -89,6 +91,7 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:theme="@style/MyEditText"
                 android:hint="请输入用户名"
                 android:id="@+id/et_register_user_name"
                 android:textSize="15sp"
@@ -118,6 +121,8 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:theme="@style/MyEditText"
+
                 android:hint="请输入手机号"
                 android:id="@+id/et_register_telephone"
                 android:textSize="15sp"
@@ -149,6 +154,7 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:theme="@style/MyEditText"
                 android:hint="请输入年龄"
                 android:id="@+id/et_register_age"
                 android:textSize="15sp"
@@ -180,6 +186,7 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:theme="@style/MyEditText"
                 android:hint="请输入密码"
                 android:id="@+id/et_register_password"
                 android:textSize="15sp"
@@ -212,6 +219,7 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:theme="@style/MyEditText"
                 android:hint="请再次输入密码"
                 android:id="@+id/et_register_password1"
                 android:textSize="15sp"

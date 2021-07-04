@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     >
 
     <LinearLayout
         android:elevation="4dp"
-
-        android:background="@drawable/dialog"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_marginTop="10dp"
+            android:background="@drawable/dialog"
+            android:paddingBottom="5dp"
+            android:paddingTop="10dp"
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
@@ -53,6 +54,7 @@
                 android:theme="@style/MyEditText"
                 android:letterSpacing="0.6"
                 android:inputType="number"
+                android:background="@null"
                 android:hint="请输入班课号"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -71,7 +73,7 @@
             android:layout_height="wrap_content">
             <Button
                 android:id="@+id/add_class"
-                android:background="#F47FA4"
+                android:background="#F47B97"
                 android:text="加入"
                 android:layout_gravity="center"
                 android:gravity="center"
