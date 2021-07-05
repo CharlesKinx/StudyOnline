@@ -1,9 +1,11 @@
 package com.example.studyonline_server;
 
 import com.example.studyonline_server.dto.MyClassDTO;
+import com.example.studyonline_server.dto.MyWorkDTO;
 import com.example.studyonline_server.mapper.ClassMapper;
 import com.example.studyonline_server.mapper.CommentMapper;
 import com.example.studyonline_server.mapper.CourseMapper;
+import com.example.studyonline_server.mapper.WorkMapper;
 import com.example.studyonline_server.model.CourseArrangementInfo;
 import com.example.studyonline_server.model.CourseInfo;
 import com.example.studyonline_server.model.EvaluateCourseStarInfo;
@@ -34,6 +36,10 @@ class StudyonlineServerApplicationTests {
 
     @Autowired
     private ClassMapper classMapper;
+
+
+    @Autowired
+    private WorkMapper workMapper;
 
     @Test
     void findAll(){
@@ -82,6 +88,14 @@ class StudyonlineServerApplicationTests {
     void findMyClass(){
         ArrayList<MyClassDTO> scoreInfos = classMapper.findMyClass(14);
         for(MyClassDTO scoreInfo : scoreInfos){
+            System.out.println(scoreInfo);
+        }
+    }
+
+    @Test
+    void findWork(){
+        ArrayList<MyWorkDTO> myWorkDTOS = workMapper.findClassWork(14,1);
+        for(MyWorkDTO scoreInfo : myWorkDTOS){
             System.out.println(scoreInfo);
         }
     }

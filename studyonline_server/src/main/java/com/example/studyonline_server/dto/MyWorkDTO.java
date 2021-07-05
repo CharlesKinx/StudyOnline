@@ -11,8 +11,8 @@ import lombok.ToString;
 public class MyWorkDTO {
 
     private String workTopic;
-    private String time;
+    private String publishTime;
+    private String commitTime;
     private float score;
     private int status;
-
 }
