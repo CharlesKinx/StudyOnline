@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.studyonline_client.R;
+import com.example.studyonline_client.model.WorkInfo;
 import com.example.studyonline_client.utils.ToastUtil;
 
 public class WriteWorkActivity extends AppCompatActivity implements View.OnClickListener{
@@ -27,6 +28,7 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
     private TextView workName;
     private LinearLayout linearLayout;
     private TextView fileSize;
+    private WorkInfo workInfo;
 
 
     private void initView(){
@@ -82,6 +84,7 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
         returnCursor.moveToFirst();
 
         String fileName = returnCursor.getString(nameIndex);
+        ToastUtil.show(fileName,WriteWorkActivity.this);
         String[] token = fileName.split("\\.");
         String s = token[1];
 

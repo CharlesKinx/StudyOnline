@@ -67,10 +67,8 @@ public class CourseController {
         return courseService.evaluateCourse(courseStarInfo);
     }
 
-
     @PostMapping("/score")
     public CourseScoreDTO getScoreInfo(@RequestBody String string){
         return courseService.getScoreInfo(string);
     }
-
 }
