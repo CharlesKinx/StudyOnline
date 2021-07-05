@@ -18,6 +18,8 @@ public class ClassListAdapter extends BaseAdapter {
     private Context context;
     private TextView className;
     private TextView classNum;
+    private TextView teacherName;
+    private TextView classTime;
 
     public ClassListAdapter(Context context,ArrayList<ClassInformation> arrayList){
         this.context = context;
@@ -28,6 +30,9 @@ public class ClassListAdapter extends BaseAdapter {
     private void initView(View view){
         className = view.findViewById(R.id.class_name);
         classNum = view.findViewById(R.id.class_number);
+        teacherName = view.findViewById(R.id.teacher_name);
+        classTime = view.findViewById(R.id.class_time);
+
     }
 
     @Override
@@ -56,7 +61,10 @@ public class ClassListAdapter extends BaseAdapter {
         initView(view);
 
         className.setText(classInformationArrayList.get(position).getClassName());
-        classNum.setText(String.valueOf(classInformationArrayList.get(position).getClassStudentNum()));
+        classNum.setText(String.valueOf(classInformationArrayList.get(position).getClassNum()));
+        teacherName.setText(classInformationArrayList.get(position).getTeacherName());
+        classTime.setText(classInformationArrayList.get(position).getTime());
+
         return view;
     }
 }

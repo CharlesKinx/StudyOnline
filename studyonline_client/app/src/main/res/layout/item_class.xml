@@ -51,6 +51,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:id="@+id/teacher_name"
                     android:layout_marginTop="4dp"
                     android:textSize="20sp"
                     android:textColor="@color/black"
@@ -82,6 +83,7 @@
                     android:textSize="15sp" />
 
                 <TextView
+                    android:id="@+id/class_time"
                     android:text="2020/6/21"
                     android:gravity="right"
                     android:layout_gravity="center"

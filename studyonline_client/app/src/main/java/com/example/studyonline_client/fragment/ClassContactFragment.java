@@ -14,16 +14,25 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.activity.ClassCoursePageActivity;
 import com.example.studyonline_client.activity.CourseInfoActivity;
+import com.example.studyonline_client.activity.LoginActivity;
 import com.example.studyonline_client.adapter.ClassListAdapter;
 import com.example.studyonline_client.model.ClassInformation;
 import com.example.studyonline_client.model.CourseInfo;
+import com.example.studyonline_client.utils.ConstantUtil;
+import com.example.studyonline_client.utils.OkHttpUtil;
 import com.example.studyonline_client.utils.ToastUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class  ClassContactFragment extends ListFragment implements View.OnClickListener {
 
@@ -40,10 +49,32 @@ public class  ClassContactFragment extends ListFragment implements View.OnClickL
     private void setData(){
 
         classInformationArrayList = new ArrayList<>();
-        classInformation = new ClassInformation();
-        classInformation.setClassName("高等数学");
-        classInformation.setClassStudentNum(18);
-        classInformationArrayList.add(classInformation);
+
+        OkHttpUtil.usePostById(ConstantUtil.url+"class/list", LoginActivity.studentInfo.getId()).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ToastUtil.show("网络异常",getActivity());
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result = response.body().string();
+                classInformationArrayList = (ArrayList<ClassInformation>) JSONObject.parseArray(result,ClassInformation.class);
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        classListAdapter = new ClassListAdapter(getActivity(),classInformationArrayList);
+                        listView.setAdapter(classListAdapter);
+                    }
+                });
+            }
+        });
 
     }
 
@@ -51,6 +82,7 @@ public class  ClassContactFragment extends ListFragment implements View.OnClickL
         listView = view.findViewById(android.R.id.list);
         floatingActionButton = view.findViewById(R.id.fab);
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -58,8 +90,7 @@ public class  ClassContactFragment extends ListFragment implements View.OnClickL
         initView(view);
         setData();
         floatingActionButton.setOnClickListener(this);
-        classListAdapter = new ClassListAdapter(getActivity(),classInformationArrayList);
-        listView.setAdapter(classListAdapter);
+
         return view;
     }
 

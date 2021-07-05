@@ -2,9 +2,27 @@ package com.example.studyonline_client.model;
 
 public class ClassInformation {
 
+    private String teacherName;
     private String className;
-    private int classStudentNum;
+    private int classNum;
     private int teacherID;
+    private String time;
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public String getClassName() {
         return className;
@@ -14,12 +32,12 @@ public class ClassInformation {
         this.className = className;
     }
 
-    public int getClassStudentNum() {
-        return classStudentNum;
+    public int getClassNum() {
+        return classNum;
     }
 
-    public void setClassStudentNum(int classStudentNum) {
-        this.classStudentNum = classStudentNum;
+    public void setClassNum(int classNum) {
+        this.classNum = classNum;
     }
 
     public int getTeacherID() {
