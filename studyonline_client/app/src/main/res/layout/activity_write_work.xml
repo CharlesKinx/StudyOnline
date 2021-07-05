@@ -23,7 +23,7 @@
 
 
         <TextView
-            android:id="@+id/home_work_back"
+            android:id="@+id/write_work_back"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center"
             android:textSize="20sp"
@@ -119,14 +119,14 @@
             android:textSize="16sp"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:text="25"
             android:gravity="right"
             android:id="@+id/work_file_size"
-            android:textColor="@color/black"
+            android:textColor="#F488A7"
             android:textSize="16sp"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center"

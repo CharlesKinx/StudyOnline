@@ -10,7 +10,15 @@ public class WorkInfo {
     private String fileType;
     private String topic;
     private String content;
+    private int status=0;
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public int getId() {
         return id;
