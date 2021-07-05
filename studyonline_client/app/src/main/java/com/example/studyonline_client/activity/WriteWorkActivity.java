@@ -22,6 +22,8 @@ import android.provider.OpenableColumns;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,11 +33,23 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.studyonline_client.R;
+import com.example.studyonline_client.model.HttpResultInfo;
 import com.example.studyonline_client.model.WorkInfo;
+import com.example.studyonline_client.utils.ConstantUtil;
+import com.example.studyonline_client.utils.JsonUtil;
+import com.example.studyonline_client.utils.OkHttpUtil;
+import com.example.studyonline_client.utils.ToastUtil;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 
 public class WriteWorkActivity extends AppCompatActivity implements View.OnClickListener{
@@ -52,6 +66,12 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
     private LinearLayout linearLayout;
     private TextView fileSize;
     private WorkInfo workInfo;
+    private TextView workTopic;
+    private Button commit;
+    private EditText editText;
+    private HttpResultInfo resultInfo;
+
+    private String url = ConstantUtil.url+"/work/upload";
 
 
     private void initView(){
@@ -61,40 +81,84 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
         linearLayout = findViewById(R.id.file_work);
         fileSize = findViewById(R.id.work_file_size);
         linearLayout.setVisibility(View.GONE);
-
+        workTopic = findViewById(R.id.topic);
+        workTopic.setText(getIntent().getStringExtra("topic"));
+        editText = findViewById(R.id.et_content);
+        commit = findViewById(R.id.commit);
         workInfo = new WorkInfo();
+        workInfo.setWorkId(getIntent().getIntExtra("workId",0));
+        workInfo.setStudentId(LoginActivity.studentInfo.getId());
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_work);
+
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_PERMISSION_CODE);
             }
         }
 
-
         initView();
         textView.setOnClickListener(this);
-
+        commit.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-
             case R.id.find_file:
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("*/*");//无类型限制
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 startActivityForResult(intent, 33);
+                break;
+            case R.id.commit:
+                if(editText.getText().toString().equals("")){
+                    ToastUtil.show("内容不能为空！",WriteWorkActivity.this);
+                }else{
+                    workInfo.setContent(editText.getText().toString());
+                    SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String datetime = tempDate.format(new java.util.Date());
+                    workInfo.setCommitTime(datetime);
+                    workInfo.setStatus(1);
+                    commitWork();
+                }
+                break;
 
         }
     }
 
+
+    private void commitWork(){
+        String json = JsonUtil.objectToJson(workInfo);
+        OkHttpUtil.usePost(url,json).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println(e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result= response.body().string();
+                resultInfo = JSONObject.parseObject(result,HttpResultInfo.class);
+                if(resultInfo.isSuccess()){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastUtil.show("提交成功",WriteWorkActivity.this);
+                        }
+                    });
+
+                    finish();
+                }
+            }
+        });
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -102,16 +166,6 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == 33) {
                 Uri uri = data.getData();
-
-                String path = getDataColumn(WriteWorkActivity.this,uri,null,null);
-                File file = new File(uri.toString());
-                if(file.exists()){
-                    System.out.println("找到文件");
-                }else{
-                    System.out.println("没找到！");
-                }
-                System.out.println(path);
-
                 getFileInfo(uri);
             }
         }
@@ -135,15 +189,16 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
         int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
 
         returnCursor.moveToFirst();
-
         String fileName = returnCursor.getString(nameIndex);
+
+        workInfo.setFileName(fileName);
+        workInfo.setUrl(uri.getPath());
 
         String[] token = fileName.split("\\.");
         String s = token[1];
 
-
-
         String type = s.toLowerCase();
+        workInfo.setFileType(type);
 
         if (type.equals("doc")||type.equals("docx")){
             imageView.setImageDrawable(getResources().getDrawable(R.drawable.word));

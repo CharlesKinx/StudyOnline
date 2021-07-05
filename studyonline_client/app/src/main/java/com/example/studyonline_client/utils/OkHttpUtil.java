@@ -74,7 +74,7 @@ public class OkHttpUtil {
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("classId", String.valueOf(workInfo.getClassId()))
+                .addFormDataPart("classId", String.valueOf(workInfo.getWorkId()))
                 .addFormDataPart("studentId", String.valueOf(workInfo.getStudentId()))
                 .addFormDataPart("type", workInfo.getFileType())
                 .addFormDataPart("sourceName", workInfo.getFileName())

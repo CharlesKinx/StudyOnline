@@ -3,14 +3,23 @@ package com.example.studyonline_client.model;
 public class WorkInfo {
 
     private int id;
-    private int classId;
+    private int workId;
     private int studentId;
     private String url;
     private String fileName;
     private String fileType;
     private String topic;
     private String content;
-    private int status=0;
+    private String commitTime;
+    private int status;
+
+    public String getCommitTime() {
+        return commitTime;
+    }
+
+    public void setCommitTime(String commitTime) {
+        this.commitTime = commitTime;
+    }
 
     public int getStatus() {
         return status;
@@ -28,12 +37,12 @@ public class WorkInfo {
         this.id = id;
     }
 
-    public int getClassId() {
-        return classId;
+    public int getWorkId() {
+        return workId;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public void setWorkId(int workId) {
+        this.workId = workId;
     }
 
     public int getStudentId() {

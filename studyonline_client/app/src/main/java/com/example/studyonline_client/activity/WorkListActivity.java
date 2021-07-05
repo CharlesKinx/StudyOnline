@@ -18,6 +18,7 @@ import com.example.studyonline_client.model.CourseInfo;
 import com.example.studyonline_client.model.WorkList;
 import com.example.studyonline_client.utils.ConstantUtil;
 import com.example.studyonline_client.utils.OkHttpUtil;
+import com.example.studyonline_client.utils.ToastUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -70,7 +71,6 @@ public class WorkListActivity extends AppCompatActivity implements View.OnClickL
                 });
             }
         });
-
     }
 
     @Override
@@ -79,8 +79,8 @@ public class WorkListActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_work_list);
         initView();
+        listView.setOnItemClickListener(this);
         getData();
-
     }
 
 
@@ -98,5 +98,13 @@ public class WorkListActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+        if(workListArrayList.get(position).getStatus()==0){
+            Intent intent = new Intent(WorkListActivity.this,WriteWorkActivity.class);
+            intent.putExtra("topic",workListArrayList.get(position).getWorkTopic());
+            intent.putExtra("workId",workListArrayList.get(position).getWorkId());
+            startActivity(intent);
+        }else{
+            ToastUtil.show("你已提交该作业！",WorkListActivity.this);
+        }
     }
 }
