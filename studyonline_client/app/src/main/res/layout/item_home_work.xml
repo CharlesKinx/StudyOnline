@@ -5,6 +5,8 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:elevation="4dp"
+        android:layout_margin="5dp"
         android:layout_gravity="center"
         android:background="@drawable/class_view"
         android:orientation="horizontal"
@@ -33,12 +35,11 @@
                     android:textSize="16sp"
                     android:maxLines="1"
                     android:text="请完成第二章课后习题，并拍照上传"
-                    android:layout_width="300dp"
+                    android:layout_width="280dp"
                     android:layout_height="wrap_content"/>
 
                 <ImageView
                     android:id="@+id/work_status"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
                     android:layout_gravity="right"
                     android:paddingRight="5dp"
@@ -56,6 +57,14 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:layout_gravity="center"
+                    android:text="发布时间："
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_gravity="center"
                     android:id="@+id/work_time"
                     android:layout_marginLeft="5dp"
                     android:textSize="12sp"
@@ -64,13 +73,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
+
+                <TextView
+
+                    android:layout_gravity="center"
+                    android:id="@+id/commit_work_time"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="12sp"
+                    android:maxLines="1"
+                    android:text="2021/7/2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/work_score"
                     android:gravity="right"
                     android:layout_marginLeft="5dp"
                     android:textSize="12sp"
                     android:maxLines="1"
-                    android:textColor="#FB1C1C"
                     android:text="89.0"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>

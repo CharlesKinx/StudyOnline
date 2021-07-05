@@ -31,6 +31,7 @@ import com.example.studyonline_client.model.CourseInfo;
 import com.example.studyonline_client.model.EvaluateCourseStarInfo;
 import com.example.studyonline_client.model.StudentInfo;
 import com.example.studyonline_client.utils.BarChartUtil;
+import com.example.studyonline_client.utils.ConstantUtil;
 import com.example.studyonline_client.utils.JsonUtil;
 import com.example.studyonline_client.utils.MyListView;
 import com.example.studyonline_client.utils.OkHttpUtil;
@@ -66,7 +67,7 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
     private ArrayList<CommentItemInfo> commentItemInfoArrayList;
     private CommentAdapter commentAdapter;
     private CommentInfo commentInfo;
-    private String url = "http://10.0.116.13:8181/comment";
+    private String url = ConstantUtil.url+"comment";
     private EvaluateCourseStarInfo evaluateCourseStarInfo;
 
     private HorizontalBarChart horizontalBarChart;
@@ -87,7 +88,6 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
         evaluateCourseStarInfo = new EvaluateCourseStarInfo();
 
     }
-
 
     private void showBarChart() {
 
@@ -145,7 +145,6 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
         horizontalBarChart.invalidate();
         horizontalBarChart.animateY(2000);
     }
-
 
     @Nullable
     @Override

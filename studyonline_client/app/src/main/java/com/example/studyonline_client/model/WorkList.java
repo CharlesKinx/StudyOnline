@@ -1,10 +1,29 @@
 package com.example.studyonline_client.model;
 
 public class WorkList {
+
     private String workTopic;
-    private String time;
+    private String publishTime;
+    private String commitTime;
     private float score;
     private int status;
+
+
+    public String getPublishTime() {
+        return publishTime;
+    }
+
+    public void setPublishTime(String publishTime) {
+        this.publishTime = publishTime;
+    }
+
+    public String getCommitTime() {
+        return commitTime;
+    }
+
+    public void setCommitTime(String commitTime) {
+        this.commitTime = commitTime;
+    }
 
     public String getWorkTopic() {
         return workTopic;
@@ -14,13 +33,6 @@ public class WorkList {
         this.workTopic = workTopic;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     public float getScore() {
         return score;

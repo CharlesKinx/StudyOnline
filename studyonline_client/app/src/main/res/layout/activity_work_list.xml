@@ -43,6 +43,7 @@
 
 
     <ListView
+        android:divider="@null"
         android:id="@+id/work_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

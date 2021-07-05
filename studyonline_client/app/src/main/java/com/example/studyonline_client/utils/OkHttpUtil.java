@@ -63,7 +63,6 @@ public class OkHttpUtil {
         Map<String,Integer> map = new HashMap<>();
         map.put("id",id);
         String json = JSON.toJSONString(map);
-        System.out.println(json);
         Call call = usePost(url,json);
         return call;
     }

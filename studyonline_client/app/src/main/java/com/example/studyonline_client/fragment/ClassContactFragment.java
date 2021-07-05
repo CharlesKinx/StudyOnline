@@ -19,9 +19,11 @@ import com.example.studyonline_client.R;
 import com.example.studyonline_client.activity.ClassCoursePageActivity;
 import com.example.studyonline_client.activity.CourseInfoActivity;
 import com.example.studyonline_client.activity.LoginActivity;
+import com.example.studyonline_client.activity.WorkListActivity;
 import com.example.studyonline_client.adapter.ClassListAdapter;
 import com.example.studyonline_client.model.ClassInformation;
 import com.example.studyonline_client.model.CourseInfo;
+import com.example.studyonline_client.model.WorkList;
 import com.example.studyonline_client.utils.ConstantUtil;
 import com.example.studyonline_client.utils.OkHttpUtil;
 import com.example.studyonline_client.utils.ToastUtil;
@@ -98,7 +100,8 @@ public class  ClassContactFragment extends ListFragment implements View.OnClickL
     public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         //ClassInformation classInfo = classInformationArrayList.get(position);
-        Intent intent = new Intent(getActivity(), ClassCoursePageActivity.class);
+        Intent intent = new Intent(getActivity(), WorkListActivity.class);
+        intent.putExtra("teacherId",classInformationArrayList.get(position).getTeacherID());
         startActivity(intent);
     }
 

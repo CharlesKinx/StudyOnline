@@ -1,5 +1,6 @@
 package com.example.studyonline_client.fragment;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.ListFragment;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,8 @@ import com.example.studyonline_client.activity.LoginActivity;
 import com.example.studyonline_client.adapter.CourseListAdapter;
 import com.example.studyonline_client.model.CourseInfo;
 import com.example.studyonline_client.utils.OkHttpUtil;
+import com.example.studyonline_client.utils.ToastUtil;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,6 +38,9 @@ public class CourseLiveFragment extends ListFragment {
     private ArrayList<CourseInfo> courseInfoArrayList;
     private CourseInfo courseInfo;
     public static String url = "http://10.0.116.3:8181/course";
+
+
+
     private void getData(){
 
         courseInfo = new CourseInfo();
@@ -84,4 +91,6 @@ public class CourseLiveFragment extends ListFragment {
 
         startActivity(intent);
     }
+
+
 }

@@ -22,13 +22,19 @@ public class WorkListAdapter extends BaseAdapter {
     private TextView workTime;
     private TextView workScore;
     private ImageView imageView;
+    private TextView workCommitTime;
 
+    public WorkListAdapter( ArrayList<WorkList> arrayList,Context context){
+        this.workInfoArrayList = arrayList;
+        this.context = context;
+    }
 
     private void initView(View view){
         workTopic = view.findViewById(R.id.work_topic);
         workTime = view.findViewById(R.id.work_time);
         workScore = view.findViewById(R.id.work_score);
         imageView = view.findViewById(R.id.work_status);
+        workCommitTime = view.findViewById(R.id.commit_work_time);
     }
 
 
@@ -59,13 +65,20 @@ public class WorkListAdapter extends BaseAdapter {
         View view = layoutInflater.inflate(R.layout.item_home_work,null);
 
         initView(view);
+
         workTopic.setText(workInfoArrayList.get(position).getWorkTopic());
-        workTime.setText(workInfoArrayList.get(position).getTime());
+        workTime.setText(workInfoArrayList.get(position).getPublishTime());
         if(workInfoArrayList.get(position).getStatus() == 0){
             workScore.setText("");
             imageView.setImageDrawable(view.getResources().getDrawable(R.drawable.no_ok));
-        }else{
-            workScore.setText(String.valueOf(workInfoArrayList.get(position).getScore()));
+            workCommitTime.setText("未提交");
+        }else if(workInfoArrayList.get(position).getScore()==0){
+            workCommitTime.setText("提交时间："+workInfoArrayList.get(position).getCommitTime());
+            workScore.setText("已提交");
+            imageView.setImageDrawable(view.getResources().getDrawable(R.drawable.ing));
+        }else {
+            workCommitTime.setText("提交时间："+workInfoArrayList.get(position).getCommitTime());
+            workScore.setText("分数："+String.valueOf(workInfoArrayList.get(position).getScore()));
             imageView.setImageDrawable(view.getResources().getDrawable(R.drawable.commit_ok));
         }
 

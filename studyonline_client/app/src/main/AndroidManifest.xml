@@ -47,6 +47,7 @@
         <activity android:name=".activity.FileSourceActivity"></activity>
         <activity android:name=".activity.NotificationActivity"></activity>
         <activity android:name=".activity.WriteWorkActivity"></activity>
+        <activity android:name=".activity.WorkListActivity"></activity>
     </application>
 
 </manifest>
