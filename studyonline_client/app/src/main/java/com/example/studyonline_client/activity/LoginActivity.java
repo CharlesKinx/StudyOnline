@@ -34,7 +34,7 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static String url = "http://10.0.116.13:8181/user/";
+    public static String url = "http://10.0.116.3:8181/user/";
     @BindView(R.id.btn_login)
     Button login;
 

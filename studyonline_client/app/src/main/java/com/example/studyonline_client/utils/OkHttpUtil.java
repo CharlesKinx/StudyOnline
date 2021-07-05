@@ -1,15 +1,20 @@
 package com.example.studyonline_client.utils;
 
 import com.alibaba.fastjson.JSON;
+import com.example.studyonline_client.model.WorkInfo;
 
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -62,4 +67,29 @@ public class OkHttpUtil {
         Call call = usePost(url,json);
         return call;
     }
+
+
+    public static Call usePostUploadFile(String url, WorkInfo workInfo,File file){
+
+        MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("classId", String.valueOf(workInfo.getClassId()))
+                .addFormDataPart("studentId", String.valueOf(workInfo.getStudentId()))
+                .addFormDataPart("type", workInfo.getFileType())
+                .addFormDataPart("sourceName", workInfo.getFileName())
+                .addFormDataPart("source",
+                        String.valueOf(new Random().nextInt()) + "." + workInfo.getFileName().split("\\.")[1],
+                        RequestBody.create(mediaType, file)
+                )
+                .build();
+
+
+        Request request = new Request.Builder().post(requestBody).url(url).build();
+
+        Call call = okHttpClient.newCall(request);
+        return call;
+    }
+
 }
