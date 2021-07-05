@@ -8,11 +8,11 @@ import lombok.ToString;
 @Getter
 @ToString
 
-public class MyClassDto {
+public class MyClassDTO {
 
 
+    private String teacherName;
     private String className;
-    private int classStudentNum;
     private int teacherID;
     private String time;
     private int classNum;

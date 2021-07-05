@@ -1,7 +1,7 @@
 package com.example.studyonline_server;
 
-import com.example.studyonline_server.dto.CommentDTO;
-import com.example.studyonline_server.dto.CourseScoreDTO;
+import com.example.studyonline_server.dto.MyClassDTO;
+import com.example.studyonline_server.mapper.ClassMapper;
 import com.example.studyonline_server.mapper.CommentMapper;
 import com.example.studyonline_server.mapper.CourseMapper;
 import com.example.studyonline_server.model.CourseArrangementInfo;
@@ -31,6 +31,10 @@ class StudyonlineServerApplicationTests {
 
     @Autowired
     private CommentMapper commentMapper;
+
+    @Autowired
+    private ClassMapper classMapper;
+
     @Test
     void findAll(){
         ArrayList<CourseArrangementInfo> courseListDTOArrayList = courseMapper.findCourseArrangement(1);
@@ -69,6 +73,15 @@ class StudyonlineServerApplicationTests {
     void findScore(){
         ArrayList<ScoreInfo> scoreInfos = courseMapper.findMaxCourseScore();
         for(ScoreInfo scoreInfo : scoreInfos){
+            System.out.println(scoreInfo);
+        }
+    }
+
+
+    @Test
+    void findMyClass(){
+        ArrayList<MyClassDTO> scoreInfos = classMapper.findMyClass(14);
+        for(MyClassDTO scoreInfo : scoreInfos){
             System.out.println(scoreInfo);
         }
     }
