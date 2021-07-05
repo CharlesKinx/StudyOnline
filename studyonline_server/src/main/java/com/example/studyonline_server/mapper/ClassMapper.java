@@ -18,10 +18,10 @@ public interface ClassMapper {
             @Result(property="className",column="class_name"),
             @Result(property="time",column="time"),
             @Result(property="classNum",column="student_number"),
-            @Result(property="teacherID",column="teacherId")
+            @Result(property="teacherID",column="teacherId"),
+
 
     })
     ArrayList<MyClassDTO> findMyClass(int id);
-
 
 }

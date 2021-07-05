@@ -10,6 +10,7 @@ import lombok.ToString;
 @ToString
 public class MyWorkDTO {
 
+    private int workId;
     private String workTopic;
     private String publishTime;
     private String commitTime;

@@ -1,6 +1,8 @@
 package com.example.studyonline_server.controller;
 
 import com.example.studyonline_server.dto.MyWorkDTO;
+import com.example.studyonline_server.model.ResultInfo;
+import com.example.studyonline_server.model.WorkInfo;
 import com.example.studyonline_server.service.impl.WorkServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,5 +26,9 @@ public class HomeWorkController {
         return workService.findMyWork(string);
     }
 
+    @PostMapping("/upload")
+    public ResultInfo commitWork(@RequestBody WorkInfo workInfo){
+        return workService.commitWork(workInfo);
+    }
 
 }
