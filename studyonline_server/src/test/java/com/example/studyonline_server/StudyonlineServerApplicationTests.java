@@ -86,8 +86,8 @@ class StudyonlineServerApplicationTests {
 
     @Test
     void findMyClass(){
-        ArrayList<MyClassDTO> scoreInfos = classMapper.findMyClass(14);
-        for(MyClassDTO scoreInfo : scoreInfos){
+        ArrayList<Integer> scoreInfos = classMapper.findMyClassList(14);
+        for(Integer scoreInfo : scoreInfos){
             System.out.println(scoreInfo);
         }
     }
@@ -98,6 +98,12 @@ class StudyonlineServerApplicationTests {
         for(MyWorkDTO scoreInfo : myWorkDTOS){
             System.out.println(scoreInfo);
         }
+    }
+
+    @Test
+    void findClass(){
+        MyClassDTO myClassDTO = classMapper.findClass(943619);
+        System.out.println(myClassDTO);
     }
 
 
