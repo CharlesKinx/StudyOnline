@@ -18,6 +18,7 @@ import com.example.studyonline_client.R;
 import com.example.studyonline_client.model.HttpResultInfo;
 import com.example.studyonline_client.model.StudentInfo;
 import com.example.studyonline_client.teacher.TeacherActivity;
+import com.example.studyonline_client.utils.ConstantUtil;
 import com.example.studyonline_client.utils.JsonUtil;
 import com.example.studyonline_client.utils.OkHttpUtil;
 import com.example.studyonline_client.utils.ToastUtil;
@@ -34,7 +35,7 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static String url = "http://10.0.116.3:8181/user/";
+    public static String url = ConstantUtil.url+"user/";
     @BindView(R.id.btn_login)
     Button login;
 
@@ -150,6 +151,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
                 httpResultInfo = (HttpResultInfo) JSONObject.parseObject(result,HttpResultInfo.class);
+
                 if(httpResultInfo.getMsg().equals("登录成功")){
                     String userString = JsonUtil.objectToJson(httpResultInfo.getData());
                     studentInfo = JSONObject.parseObject(userString,StudentInfo.class);

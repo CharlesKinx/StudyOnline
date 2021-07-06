@@ -20,6 +20,7 @@ import com.example.studyonline_client.activity.CourseInfoActivity;
 import com.example.studyonline_client.activity.LoginActivity;
 import com.example.studyonline_client.adapter.CourseListAdapter;
 import com.example.studyonline_client.model.CourseInfo;
+import com.example.studyonline_client.utils.ConstantUtil;
 import com.example.studyonline_client.utils.OkHttpUtil;
 import com.example.studyonline_client.utils.ToastUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -37,7 +38,7 @@ public class CourseLiveFragment extends ListFragment {
     private CourseListAdapter courseListAdapter;
     private ArrayList<CourseInfo> courseInfoArrayList;
     private CourseInfo courseInfo;
-    public static String url = "http://10.0.116.3:8181/course";
+    public static String url = ConstantUtil.url+"course";
 
 
 

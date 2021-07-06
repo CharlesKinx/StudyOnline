@@ -165,13 +165,17 @@ public class CourseEvaluateFragment extends ListFragment implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_course_comment:
-                    SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    String datetime = tempDate.format(new java.util.Date());
-                    commentInfo.setCourseId(courseId);
-                    commentInfo.setStudentId(LoginActivity.studentInfo.getId());
-                    commentInfo.setContent(editTextComment.getText().toString());
-                    commentInfo.setTime(datetime);
-                    postComment(commentInfo);
+                    if(editTextComment.getText().toString().equals("")){
+                        ToastUtil.show("评论不能为空！",getActivity());
+                    }else{
+                        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        String datetime = tempDate.format(new java.util.Date());
+                        commentInfo.setCourseId(courseId);
+                        commentInfo.setStudentId(LoginActivity.studentInfo.getId());
+                        commentInfo.setContent(editTextComment.getText().toString());
+                        commentInfo.setTime(datetime);
+                        postComment(commentInfo);
+                    }
                     break;
         }
     }

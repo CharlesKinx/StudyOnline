@@ -22,7 +22,7 @@
 
 
         <TextView
-            android:id="@+id/home_work_back"
+            android:id="@+id/work_list_back"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center"
             android:textSize="20sp"

@@ -39,7 +39,7 @@ public class WorkListActivity extends AppCompatActivity implements View.OnClickL
 
     private void initView(){
         listView = findViewById(R.id.work_list);
-        textView = findViewById(R.id.home_work_back);
+        textView = findViewById(R.id.work_list_back);
         teacherId = getIntent().getIntExtra("teacherId",0);
         workListArrayList  = new ArrayList<>();
     }
@@ -80,6 +80,7 @@ public class WorkListActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_work_list);
         initView();
         listView.setOnItemClickListener(this);
+        textView.setOnClickListener(this);
         getData();
     }
 
@@ -88,7 +89,7 @@ public class WorkListActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.home_work_back:
+            case R.id.work_list_back:
                 finish();
                 break;
         }

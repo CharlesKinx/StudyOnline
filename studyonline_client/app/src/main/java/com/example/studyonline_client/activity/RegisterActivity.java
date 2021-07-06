@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.studyonline_client.R;
 import com.example.studyonline_client.model.HttpResultInfo;
 import com.example.studyonline_client.model.StudentInfo;
+import com.example.studyonline_client.utils.ConstantUtil;
 import com.example.studyonline_client.utils.JsonUtil;
 import com.example.studyonline_client.utils.OkHttpUtil;
 import com.example.studyonline_client.utils.ToastUtil;
@@ -65,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     CheckBox girlCheckBox;
 
 
-    private String url = "http://10.0.116.3:8181/user/register";
+    private String url = ConstantUtil.url+"user/register";
 
     private HttpResultInfo httpResultInfo;
     private boolean teacher=false;

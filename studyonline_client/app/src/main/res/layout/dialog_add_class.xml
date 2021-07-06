@@ -50,6 +50,7 @@
                 android:layout_height="40dp"/>
 
             <EditText
+                android:id="@+id/class_id"
                 android:textColor="#F47FA4"
                 android:theme="@style/MyEditText"
                 android:letterSpacing="0.6"
