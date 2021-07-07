@@ -70,6 +70,7 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
     private Button commit;
     private EditText editText;
     private HttpResultInfo resultInfo;
+    private TextView back;
 
     private String url = ConstantUtil.url+"/work/upload";
 
@@ -88,6 +89,7 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
         workInfo = new WorkInfo();
         workInfo.setWorkId(getIntent().getIntExtra("workId",0));
         workInfo.setStudentId(LoginActivity.studentInfo.getId());
+        back = findViewById(R.id.write_work_back);
 
     }
 
@@ -105,6 +107,7 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
         initView();
         textView.setOnClickListener(this);
         commit.setOnClickListener(this);
+        back.setOnClickListener(this);
 
     }
 
@@ -129,6 +132,8 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
                     commitWork();
                 }
                 break;
+            case R.id.write_work_back:
+                finish();
 
         }
     }
@@ -151,10 +156,12 @@ public class WriteWorkActivity extends AppCompatActivity implements View.OnClick
                         @Override
                         public void run() {
                             ToastUtil.show("提交成功",WriteWorkActivity.this);
+                            Intent intent = new Intent(WriteWorkActivity.this,MainPageActivity.class);
+                            startActivity(intent);
                         }
                     });
 
-                    finish();
+
                 }
             }
         });

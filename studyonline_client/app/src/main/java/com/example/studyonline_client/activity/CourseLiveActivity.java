@@ -62,7 +62,7 @@ public class CourseLiveActivity extends AppCompatActivity {
 
         mLivePusher.startCameraPreview(pushView);
         
-        String url = "rtmp://144585.livepush.myqcloud.com/live/demo?txSecret=0161502674029b290636dd30b659f434&txTime=60E274F9";
+        String url = "rtmp://144585.livepush.myqcloud.com/live/live?txSecret=73c06cfa87afd38812fdbe0e17a7668d&txTime=60E76A52";
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
