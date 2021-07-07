@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Getter
 @ToString
 
-
-
 public class StudentInfoDTO {
 
     private String name;
