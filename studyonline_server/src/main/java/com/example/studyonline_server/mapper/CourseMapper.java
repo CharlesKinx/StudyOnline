@@ -71,4 +71,7 @@ public interface CourseMapper {
             @Result(property="score",column="avg_score")
     })
     ArrayList<ScoreInfo> findMaxCourseScore();
+
+    @Select("select count(studentId) from choose_course where studentId = #{studentId}")
+    int findStudentCourseNumber(int studentId);
 }

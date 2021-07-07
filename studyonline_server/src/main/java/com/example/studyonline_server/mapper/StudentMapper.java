@@ -29,6 +29,7 @@ public interface StudentMapper {
     @Select("select name from student where id = #{id}")
     String findNameById(int id);
 
+
     @Select("select * from student")
     ArrayList<StudentInfo> findAllStudent();
 

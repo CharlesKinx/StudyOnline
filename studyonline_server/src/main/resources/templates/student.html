@@ -58,28 +58,33 @@
         <div class="row">
             <table class="table table-hover">
                 <thead>
-                <tr class="success">
-                    <th><input type="checkbox"/></th>
-                    <th>序号</th>
-                    <th>用户名</th>
-                    <th>密码</th>
-                    <th>年龄</th>
-                    <th>地址</th>
-                    <th>电话</th>
-                    <th>性别</th>
-                    <th>操作</th>
+                <tr class="success" align="center" >
+                    <th >账号 </th>
+                    <th >用户名</th>
+                    <th >密码</th>
+                    <th >年龄</th>
+                    <th >性别</th>
+                    <th >电话</th>
+                    <th >班群数</th>
+                    <th >课程数</th>
+                    <th >评论数</th>
+                    <th >提交作业次数</th>
+
                 </tr>
                 </thead>
                 <tr th:each="table_item:${tables}">
-                    <td><input type="checkbox" class="check"></td>
-                    <td th:text="${table_item.id}"></td>
-                    <td th:text="${table_item.username}"></td>
-                    <td th:text="${table_item.password}"></td>
-                    <td th:text="${table_item.age}"></td>
-                    <td th:text="${table_item.address}"></td>
-                    <td th:text="${table_item.phone}"></td>
+                    <!--/*@thymesVar id="getAccount" type=""*/-->
+                    <td th:text="${table_item.getAccount()}" align="center"></td>
+                    <td th:text="${table_item.getName()}" align="center"></td>
+                    <td th:text="${table_item.getPassword()}"  align="center"></td>
+                    <td th:text="${table_item.getAge()}"  align="center"></td>
+                    <td th:text="${table_item.getSex()}"  align="center"></td>
+                    <td th:text="${table_item.getTelephone()}"  align="center"></td>
                     <!--值转换显示-->
-                    <td th:text="${table_item.gender}==0?'女':'男'"></td>
+                    <td th:text="${table_item.getClassNumber()}"  align="center"></td>
+                    <td th:text="${table_item.getCourseNumber()}"  align="center"></td>
+                    <td th:text="${table_item.getCommentNumber()}"  align="center"></td>
+                    <td th:text="${table_item.getWorkNumber()}" align="center"></td>
                     <!--日期转换-->
                     <!--<td th:text="${#dates.format(table_item.birth, 'yyyy-MM-dd HH:mm')}"></td>-->
                     <td>

@@ -22,5 +22,6 @@ public class StudentInfoDTO {
     private int age;
     private int commentNumber;
     private int workNumber;
+    private int role;
 
 }

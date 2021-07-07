@@ -41,4 +41,7 @@ public interface ClassMapper {
             @Result(property="teacherID",column="teacherId"),
     })
     MyClassDTO findClass(int classId);
+
+    @Select("select count(studentId) from enter_class where studentId = #{studentId}")
+    int findStudentClassNumber(int studentId);
 }

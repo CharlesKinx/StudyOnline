@@ -23,4 +23,8 @@ public interface CommentMapper {
 
     @Select("select comment.courseId,student.name,comment.time,comment.content,course_score.score from course,student,course_score,comment where course.id = #{ID} and course.id = comment.courseId and student.id = comment.studentId and course.id = course_score.courseId and student.id = course_score.studentId")
     ArrayList<CommentDTO> findComment(int ID);
+
+
+    @Select("select count(studentId) from comment where studentId = #{studentId}")
+    int findStudentCommentNumber(int studentId);
 }

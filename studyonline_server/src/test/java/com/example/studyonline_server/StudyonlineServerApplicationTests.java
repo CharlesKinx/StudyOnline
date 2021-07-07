@@ -2,6 +2,7 @@ package com.example.studyonline_server;
 
 import com.example.studyonline_server.dto.MyClassDTO;
 import com.example.studyonline_server.dto.MyWorkDTO;
+import com.example.studyonline_server.dto.StudentInfoDTO;
 import com.example.studyonline_server.mapper.ClassMapper;
 import com.example.studyonline_server.mapper.CommentMapper;
 import com.example.studyonline_server.mapper.CourseMapper;
@@ -10,6 +11,8 @@ import com.example.studyonline_server.model.CourseArrangementInfo;
 import com.example.studyonline_server.model.CourseInfo;
 import com.example.studyonline_server.model.EvaluateCourseStarInfo;
 import com.example.studyonline_server.model.ScoreInfo;
+import com.example.studyonline_server.service.AdministratorService;
+import com.example.studyonline_server.service.impl.AdministratorServiceImpl;
 import com.example.studyonline_server.service.impl.CourseServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +43,9 @@ class StudyonlineServerApplicationTests {
 
     @Autowired
     private WorkMapper workMapper;
+
+    @Autowired
+    private AdministratorServiceImpl administratorService;
 
     @Test
     void findAll(){
@@ -107,4 +113,17 @@ class StudyonlineServerApplicationTests {
     }
 
 
+    @Test
+    void number(){
+        int num = commentMapper.findStudentCommentNumber(14);
+        System.out.println(num);
+    }
+
+    @Test
+    void student(){
+        ArrayList<StudentInfoDTO> arrayList = administratorService.findStudentInfo();
+        for (StudentInfoDTO studentInfoDTO : arrayList){
+            System.out.println(studentInfoDTO);
+        }
+    }
 }

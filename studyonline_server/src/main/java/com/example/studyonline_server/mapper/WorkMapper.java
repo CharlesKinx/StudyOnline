@@ -30,5 +30,6 @@ public interface WorkMapper {
     void insertFile(WorkFileInfo workFileInfo);
 
 
-
+    @Select("select count(studentId) from student_work where studentId = #{studentId} and status = 1")
+    int findStudentWorkNumber(int studentId);
 }

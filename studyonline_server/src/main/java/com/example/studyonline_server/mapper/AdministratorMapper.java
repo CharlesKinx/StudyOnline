@@ -1,10 +1,13 @@
 package com.example.studyonline_server.mapper;
 
 
+import com.example.studyonline_server.dto.StudentInfoDTO;
 import com.example.studyonline_server.model.AdministratorInfo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.ArrayList;
 
 @Mapper
 public interface AdministratorMapper {
@@ -14,6 +17,7 @@ public interface AdministratorMapper {
 
     @Insert("insert into admin (account,password,telephone,name) values (#{account},#{password},#{telephone},#{name})")
     void insertAdmin(AdministratorInfo administratorInfo);
+
 
 
 }
