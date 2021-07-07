@@ -74,4 +74,7 @@ public interface CourseMapper {
 
     @Select("select count(studentId) from choose_course where studentId = #{studentId}")
     int findStudentCourseNumber(int studentId);
+
+    @Select("select count(courseId) from choose_course where courseId =#{courseId}")
+    int findCourseNumber(int courseId);
 }

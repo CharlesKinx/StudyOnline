@@ -10,7 +10,7 @@ import lombok.ToString;
 public class CourseInfoDTO {
 
     private int id;
-    private String courseName;
+    private String name;
     private String teacherName;
     private String introduce;
     private String time;

@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.ArrayList;
+
 @Mapper
 public interface TeacherMapper {
 
@@ -27,5 +29,21 @@ public interface TeacherMapper {
 
     @Update("update teacher set name = #{name}, telephone=#{telephone},age=#{age},sex=#{sex},password =#{password} ,account =#{account} where id = #{id}")
     void updateStudentInfo(TeacherInfo teacherInfo);
+
+
+    @Select("select * from teacher")
+    ArrayList<TeacherInfo> findAllTeacher();
+
+    @Select("select name from course where teacherId = #{teacherId}")
+    String findCourseName(int teacherId);
+
+    @Select("select class_name from class where teacherId = #{teacherId}")
+    String findClassName(int teacherId);
+
+    @Select("select count(teacherId) from work where teacherId = #{teacherId}")
+    int findWorkNum(int teacherId);
+
+    @Select("select name from teacher where id = #{teacherId}")
+    String findTeacherName(int teacherId);
 
 }

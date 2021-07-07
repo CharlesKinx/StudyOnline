@@ -1,6 +1,6 @@
 package com.example.studyonline_server.service;
 
-import com.example.studyonline_server.dto.StudentInfoDTO;
+import com.example.studyonline_server.dto.*;
 import com.example.studyonline_server.model.AdministratorInfo;
 import org.springframework.ui.Model;
 
@@ -12,4 +12,8 @@ public interface AdministratorService {
     boolean isRightPassword(String account, String password);
 
     ArrayList<StudentInfoDTO> findStudentInfo();
+    ArrayList<TeacherInfoDTO> findTeacherInfo();
+    ArrayList<CommentInfoDTO> findCommentInfoDTO();
+    ArrayList<CourseInfoDTO> findCourseInfoDTO();
+    ArrayList<WorkInfoDTO> findWorkInfoDTO();
 }

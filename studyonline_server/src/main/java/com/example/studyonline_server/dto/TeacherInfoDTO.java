@@ -10,7 +10,7 @@ import lombok.ToString;
 @ToString
 
 public class TeacherInfoDTO {
-
+    private int id;
     private String name;
     private String account;
     private String password;
@@ -19,5 +19,6 @@ public class TeacherInfoDTO {
     private String courseName;
     private String className;
     private int publishWorkNum;
+    private String telephone;
 
 }

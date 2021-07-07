@@ -9,6 +9,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class CourseInfo {
+
     private String name;
     private String introduce;
     private String evaluation;

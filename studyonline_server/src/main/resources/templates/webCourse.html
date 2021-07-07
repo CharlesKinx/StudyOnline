@@ -44,7 +44,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>教师类用户数据信息</h1>
+                        <h1>课程数据信息</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -59,32 +59,28 @@
             <table class="table table-hover">
                 <thead>
                 <tr class="success" align="center" >
-                    <th >教师ID</th>
-                    <th >账号 </th>
-                    <th >用户名</th>
-                    <th >密码</th>
-                    <th >年龄</th>
-                    <th >性别</th>
-                    <th >电话</th>
-                    <th >教授课程名</th>
-                    <th >创建班群名</th>
-                    <th >发布作业数量</th>
+                    <th >课程ID</th>
+                    <th >课程名</th>
+                    <th >教师名</th>
+                    <th >课程介绍</th>
+                    <th >课程创建时间</th>
+                    <th >观看人数</th>
+                    <th >课程评分</th>
+                    <th >选课人数</th>
 
                 </tr>
                 </thead>
                 <tr th:each="table_item:${tables}">
                     <!--/*@thymesVar id="getAccount" type=""*/-->
                     <td th:text="${table_item.getId()}" align="center"></td>
-                    <td th:text="${table_item.getAccount()}" align="center"></td>
                     <td th:text="${table_item.getName()}" align="center"></td>
-                    <td th:text="${table_item.getPassword()}"  align="center"></td>
-                    <td th:text="${table_item.getAge()}"  align="center"></td>
-                    <td th:text="${table_item.getSex()}"  align="center"></td>
-                    <td th:text="${table_item.getTelephone()}"  align="center"></td>
+                    <td th:text="${table_item.getTeacherName()}" align="center"></td>
+                    <td th:text="${table_item.getIntroduce()}"  align="center"></td>
+                    <td th:text="${table_item.getTime()}"  align="center"></td>
+                    <td th:text="${table_item.getViewNumber()}"  align="center"></td>
+                    <td th:text="${table_item.getEvaluation()}"  align="center"></td>
                     <!--值转换显示-->
-                    <td th:text="${table_item.getCourseName()}"  align="center"></td>
-                    <td th:text="${table_item.getClassName()}"  align="center"></td>
-                    <td th:text="${table_item.getPublishWorkNum()}"  align="center"></td>
+                    <td th:text="${table_item.getCourseNumber()}"  align="center"></td>
                     <!--日期转换-->
                     <!--<td th:text="${#dates.format(table_item.birth, 'yyyy-MM-dd HH:mm')}"></td>-->
                     <td>
