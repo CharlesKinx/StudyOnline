@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>个人博客系统 | 注册页面</title>
+    <!-- 告诉浏览器屏幕自适应 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- 主题样式 -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- 离线 Google 字体: Source Sans Pro -->
+    <style>
+
+        .register-page{
+            background-image: url("./dist/img/background/background.png");
+            background-size:cover;
+        }
+
+    </style>
+    <link href="/AdminLTE/AdminLTE-3.x/dist/css/google.css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition register-page">
+<div class="register-box">
+    <div class="card" style="opacity: 0.5">
+        <div class="card-body register-card-body">
+            <p class="login-box-msg">注册账号</p>
+            <form action="/register" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="account" placeholder="账号" th:value="${account}">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name ="name" id = "name"placeholder="昵称"th:value="${name}">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="telephone" id ="telephone" placeholder="手机号"th:value="${telephone}">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" name="password" id ="password" placeholder="密码" th:value="${password}">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                             th:text="${error}"
+                             th:if="${error!=null}">
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <a href="/" class="text-center">我已经有账号了</a>
+                    </div>
+                    <div class="col-5">
+                        <button type="submit" class="btn btn-primary btn-block">注册</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+
+        </div>
+        <!-- /.form-box -->
+    </div><!-- /.card -->
+</div>
+<!-- /.register-box -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+
+
+        $('.toastrDefaultSuccess').click(function() {
+            toastr.success('Lorem ipsum dolor 坐在沙发上，坐立不安。')
+        });
+        $('.toastrDefaultInfo').click(function() {
+            toastr.info('Lorem ipsum dolor 坐在沙发上，坐立不安。')
+        });
+        $('.toastrDefaultError').click(function() {
+            toastr.error('Lorem ipsum dolor 坐在沙发上，坐立不安。')
+        });
+        $('.toastrDefaultWarning').click(function() {
+            toastr.warning('请输入完整信息！')
+        });
+
+        $('.toastsDefaultDefault').click(function() {
+            $(document).Toasts('create', {
+                title: 'Toast 标题',
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。'
+            })
+        });
+        $('.toastsDefaultTopLeft').click(function() {
+            $(document).Toasts('create', {
+                title: 'Toast 标题',
+                position: 'topLeft',
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。'
+            })
+        });
+        $('.toastsDefaultBottomRight').click(function() {
+            $(document).Toasts('create', {
+                title: 'Toast 标题',
+                position: 'bottomRight',
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。'
+            })
+        });
+        $('.toastsDefaultBottomLeft').click(function() {
+            $(document).Toasts('create', {
+                title: 'Toast 标题',
+                position: 'bottomLeft',
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。'
+            })
+        });
+        $('.toastsDefaultAutohide').click(function() {
+            $(document).Toasts('create', {
+                title: 'Toast 标题',
+                autohide: true,
+                delay: 750,
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。'
+            })
+        });
+        $('.toastsDefaultNotFixed').click(function() {
+            $(document).Toasts('create', {
+                title: 'Toast 标题',
+                fixed: false,
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。'
+            })
+        });
+        $('.toastsDefaultFull').click(function() {
+            $(document).Toasts('create', {
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。',
+                title: 'Toast 标题',
+                subtitle: '子标题',
+                icon: 'fas fa-envelope fa-lg',
+            })
+        });
+        $('.toastsDefaultFullImage').click(function() {
+            $(document).Toasts('create', {
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。',
+                title: 'Toast 标题',
+                subtitle: '子标题',
+                image: '../../dist/img/user3-128x128.jpg',
+                imageAlt: '用户头像',
+            })
+        });
+        $('.toastsDefaultSuccess').click(function() {
+            $(document).Toasts('create', {
+                class: 'bg-success',
+                title: 'Toast 标题',
+                subtitle: '子标题',
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。'
+            })
+        });
+        $('.toastsDefaultInfo').click(function() {
+            $(document).Toasts('create', {
+                class: 'bg-info',
+                title: 'Toast 标题',
+                subtitle: '子标题',
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。'
+            })
+        });
+        $('.toastsDefaultWarning').click(function() {
+            $(document).Toasts('create', {
+                class: 'bg-warning',
+                title: '警告：',
+                subtitle: '',
+                body: '请输入完整信息！'
+            })
+        });
+        $('.toastsDefaultDanger').click(function() {
+            $(document).Toasts('create', {
+                class: 'bg-danger',
+                title: 'Toast 标题',
+                subtitle: '子标题',
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。'
+            })
+        });
+        $('.toastsDefaultMaroon').click(function() {
+            $(document).Toasts('create', {
+                class: 'bg-maroon',
+                title: 'Toast 标题',
+                subtitle: '子标题',
+                body: 'Lorem ipsum dolor 坐在沙发上，坐立不安。'
+            })
+        });
+    });
+
+</script>
+</body>
+</html>
