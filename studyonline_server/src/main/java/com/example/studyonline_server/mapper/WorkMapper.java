@@ -2,7 +2,9 @@ package com.example.studyonline_server.mapper;
 
 import com.example.studyonline_server.dto.MyWorkDTO;
 import com.example.studyonline_server.model.StudentWorkInfo;
+import com.example.studyonline_server.model.Work;
 import com.example.studyonline_server.model.WorkFileInfo;
+import com.example.studyonline_server.model.WorkInfo;
 import org.apache.ibatis.annotations.*;
 
 import java.util.ArrayList;
@@ -30,6 +32,12 @@ public interface WorkMapper {
     void insertFile(WorkFileInfo workFileInfo);
 
 
+    @Select("select * from work")
+    ArrayList<Work> findAllWork();
+
     @Select("select count(studentId) from student_work where studentId = #{studentId} and status = 1")
     int findStudentWorkNumber(int studentId);
+
+    @Select("select count(status) from student_work where status = 1 and workId = #{workId}")
+    int findCommitNumber(int workId);
 }

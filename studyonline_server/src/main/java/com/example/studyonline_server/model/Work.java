@@ -1,4 +1,4 @@
-package com.example.studyonline_server.dto;
+package com.example.studyonline_server.model;
 
 
 import lombok.Getter;
@@ -8,14 +8,10 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-
-public class WorkInfoDTO {
-
+public class Work {
     private int work_id;
     private String topic;
-    private String teacherName;
+    private int teacherId;
     private String time;
-    private int commitNumber;
-    private int unCommitNumber;
 
 }

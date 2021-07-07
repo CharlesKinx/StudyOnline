@@ -2,11 +2,9 @@ package com.example.studyonline_server.service.impl;
 
 import com.example.studyonline_server.dto.*;
 import com.example.studyonline_server.mapper.*;
-import com.example.studyonline_server.model.AdministratorInfo;
-import com.example.studyonline_server.model.CourseInfo;
-import com.example.studyonline_server.model.StudentInfo;
-import com.example.studyonline_server.model.TeacherInfo;
+import com.example.studyonline_server.model.*;
 import com.example.studyonline_server.service.AdministratorService;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -111,7 +109,21 @@ public class AdministratorServiceImpl implements AdministratorService {
 
     @Override
     public ArrayList<CommentInfoDTO> findCommentInfoDTO() {
-        return null;
+        ArrayList<CommentInfoDTO> commentInfoDTOArrayList = new ArrayList<>();
+
+
+        ArrayList<CommentInfo> findAllComments = commentMapper.findAllComments();
+        for(CommentInfo commentInfo :findAllComments){
+            CommentInfoDTO commentInfoDTO = new CommentInfoDTO();
+            BeanUtils.copyProperties(commentInfo,commentInfoDTO);
+            commentInfoDTO.setCourseName(courseMapper.findCourseName(commentInfo.getId()));
+            commentInfoDTO.setStudentName(studentMapper.findNameById(commentInfo.getStudentId()));
+
+            commentInfoDTOArrayList.add(commentInfoDTO);
+        }
+
+
+        return commentInfoDTOArrayList;
     }
 
     @Override
@@ -131,7 +143,22 @@ public class AdministratorServiceImpl implements AdministratorService {
 
     @Override
     public ArrayList<WorkInfoDTO> findWorkInfoDTO() {
-        return null;
+        ArrayList<WorkInfoDTO> workInfoDTOArrayList = new ArrayList<>();
+        ArrayList<Work> works = workMapper.findAllWork();
+
+        for(Work work:works){
+            WorkInfoDTO workInfoDTO = new WorkInfoDTO();
+            BeanUtils.copyProperties(work,workInfoDTO);
+
+            workInfoDTO.setTeacherName(teacherMapper.findTeacherName(work.getTeacherId()));
+            int commitNum = workMapper.findCommitNumber(work.getWork_id());
+            workInfoDTO.setCommitNumber(commitNum);
+            int classId = classMapper.findClassId(work.getTeacherId());
+            workInfoDTO.setUnCommitNumber(classMapper.findAddClassNumber(classId) -commitNum );
+
+            workInfoDTOArrayList.add(workInfoDTO);
+        }
+        return workInfoDTOArrayList;
     }
 
 

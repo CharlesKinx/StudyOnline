@@ -44,4 +44,10 @@ public interface ClassMapper {
 
     @Select("select count(studentId) from enter_class where studentId = #{studentId}")
     int findStudentClassNumber(int studentId);
+
+    @Select("select count(studentId) from enter_class where classId = #{classId} ")
+    int findAddClassNumber(int classId);
+
+    @Select("select id from class where teacherId = #{teacherId}")
+    int findClassId(int teacherID);
 }

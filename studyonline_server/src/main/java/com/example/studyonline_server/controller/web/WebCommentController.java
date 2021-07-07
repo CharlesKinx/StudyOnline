@@ -1,7 +1,8 @@
 package com.example.studyonline_server.controller.web;
 
+
+import com.example.studyonline_server.dto.CommentInfoDTO;
 import com.example.studyonline_server.dto.CourseInfoDTO;
-import com.example.studyonline_server.dto.WorkInfoDTO;
 import com.example.studyonline_server.service.impl.AdministratorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,17 +11,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 
+
+
 @Controller
-public class WorkController {
+public class WebCommentController {
 
     @Autowired
     private AdministratorServiceImpl administratorService;
 
-    @GetMapping("/work")
+    @GetMapping("/webComment")
     private String student(Model model){
 
-        ArrayList<WorkInfoDTO> courseInfoDTOArrayList = administratorService.findWorkInfoDTO();
+        ArrayList<CommentInfoDTO> courseInfoDTOArrayList = administratorService.findCommentInfoDTO();
         model.addAttribute("tables",courseInfoDTOArrayList);
-        return "work";
+        return "webComment";
     }
 }

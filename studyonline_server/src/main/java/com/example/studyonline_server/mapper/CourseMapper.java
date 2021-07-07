@@ -1,6 +1,7 @@
 package com.example.studyonline_server.mapper;
 
 
+import com.example.studyonline_server.dto.CommentInfoDTO;
 import com.example.studyonline_server.dto.CourseScoreDTO;
 import com.example.studyonline_server.model.*;
 import org.apache.ibatis.annotations.*;
@@ -77,4 +78,8 @@ public interface CourseMapper {
 
     @Select("select count(courseId) from choose_course where courseId =#{courseId}")
     int findCourseNumber(int courseId);
+
+    @Select("select name from course where id = #{id}")
+    String findCourseName(int id);
+
 }

@@ -1,11 +1,9 @@
 package com.example.studyonline_server.mapper;
 
 import com.example.studyonline_server.dto.CommentDTO;
+import com.example.studyonline_server.dto.CommentInfoDTO;
 import com.example.studyonline_server.model.CommentInfo;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.ArrayList;
 
@@ -27,4 +25,12 @@ public interface CommentMapper {
 
     @Select("select count(studentId) from comment where studentId = #{studentId}")
     int findStudentCommentNumber(int studentId);
+
+
+    @Select("select comment.id,student.name,content,comment.time,course.name from comment,student,course where studentId = student.id and courseId = course.id ")
+    @Results({
+            @Result(property="courseName",column="name"),
+            @Result(property="studentName",column="avg_score")
+    })
+    ArrayList<CommentInfoDTO> findAllCommentInfo();
 }

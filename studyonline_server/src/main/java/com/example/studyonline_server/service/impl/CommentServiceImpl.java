@@ -37,7 +37,7 @@ public class CommentServiceImpl implements CommentService {
         commentDTO.setTime(commentInfo.getTime());
         commentDTO.setContent(commentInfo.getContent());
         commentDTO.setScore(evaluateCourseStarInfo.getScore());
-
+        commentMapper.publishComment(commentInfo);
         return commentDTO;
     }
 
