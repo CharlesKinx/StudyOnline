@@ -14,8 +14,8 @@ web端：Thymeleaf、BootStrap
 
 | 注册                                                         | 登录                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img src="https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/05F5669C2ED60F9825170487226CA82B.jpg" width="250px">
- |<img src="https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/610381F6CFAAE42161B12085574106ED.jpg" width="250px"> |
+| <img src="https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/05F5669C2ED60F9825170487226CA82B.jpg">
+ |<img src="https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/610381F6CFAAE42161B12085574106ED.jpg"> |
 
 移动端截图：
 <p float="left">
