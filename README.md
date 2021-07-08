@@ -34,7 +34,7 @@ web端：Thymeleaf、BootStrap
 
 |登录界面 | 主页面 | 
 |:-------:|:---------:|
-|![](https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/1.jpg) | ![](https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/3.png.jpg) |
+|![](https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/1.jpg) | ![](https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/3.png) |
 
 
 
