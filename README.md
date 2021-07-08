@@ -12,7 +12,7 @@ web端：Thymeleaf、BootStrap
 数据库：Mysql
 
 
-移动端截图：
+### 移动端截图：
 <p float="left"  align="center">
 <img src="https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/05F5669C2ED60F9825170487226CA82B.jpg" width="300px">
 
@@ -37,7 +37,7 @@ web端：Thymeleaf、BootStrap
 </p>
 
 
-Web端截图：
+### Web端截图：
 
 <p float="left"  align="center">
 <img src="https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/1.jpg" width="500px">
