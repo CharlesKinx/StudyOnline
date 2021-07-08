@@ -32,8 +32,8 @@ web端：Thymeleaf、BootStrap
 Web端截图：
 
 <p float="left"  align="center">
-<img src="https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/1.jpg" width="600px">
-<img src="https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/3.png" width="600px">
+<img src="https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/1.jpg" width="500px">
+<img src="https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/3.png" width="500px">
 </p>
 
 
