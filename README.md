@@ -13,9 +13,9 @@ web端：Thymeleaf、BootStrap
 
 
 
-移动端截图：
+移动端截图
 
-![https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/F665EB648797169723F5922F986818A8.jpg]()
+![图片](https://github.com/CharlesKinx/StudyOnline/blob/master/%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE/05F5669C2ED60F9825170487226CA82B.jpg)
 
 
 
