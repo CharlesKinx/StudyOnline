@@ -88,8 +88,8 @@
                     <!--日期转换-->
                     <!--<td th:text="${#dates.format(table_item.birth, 'yyyy-MM-dd HH:mm')}"></td>-->
                     <td>
-                        <button type="button" class="btn btn-default">修改</button>
-                        <button type="button" class="btn btn-default">删除</button>
+                        <a type="button" class="btn btn-default">修改</a>
+                        <a  th:href="'/delete?account?'+${table_item.getAccount()}" type="button" class="btn btn-default">删除</a>
                     </td>
                 </tr>
             </table>

@@ -33,4 +33,7 @@ public interface StudentMapper {
     @Select("select * from student")
     ArrayList<StudentInfo> findAllStudent();
 
+    @Delete("delete from student where account =#{account}")
+    void deleteStudent(String account);
+
 }
